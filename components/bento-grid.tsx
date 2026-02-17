@@ -50,7 +50,7 @@ export const BentoGridItem = ({
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
             className={cn(
-                "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent flex flex-col justify-between space-y-4 overflow-hidden",
+                "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4  bg-white border border-transparent flex flex-col justify-between space-y-4 overflow-hidden",
                 className
             )}
             onClick={onClick}
