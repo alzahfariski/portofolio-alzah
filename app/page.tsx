@@ -1,12 +1,14 @@
 import { BentoGrid, BentoGridItem } from "@/components/bento-grid";
 import { AboutCard } from "@/components/about-card";
-import { getUserProfile } from "@/lib/firestore";
-import { UserProfile } from "@/lib/types";
+import { getUserProfile, getExperiences } from "@/lib/firestore";
+import { CompanyExperience, UserProfile } from "@/lib/types";
 import { SkillCard } from "@/components/skill-card";
+import { ExperienceCard } from "@/components/experience-card";
 
 
 export default async function Home() {
   const profile = await getUserProfile() as UserProfile | null;
+  const experiences = await getExperiences() as CompanyExperience[] | null;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-4 md:p-24 bg-white">
@@ -19,9 +21,16 @@ export default async function Home() {
           />
 
           {/* Tech Stack */}
-          <div className="md:col-span-1 md:row-span-1">
-            <SkillCard skills={profile?.skills} />
-          </div>
+          <SkillCard
+            skills={profile?.skills}
+            className="md:col-span-1 md:row-span-1"
+          />
+
+          {/* Experience */}
+          <ExperienceCard
+            experiences={experiences}
+            className="md:col-span-1 md:row-span-3"
+          />
         </BentoGrid>
 
 

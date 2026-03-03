@@ -26,7 +26,7 @@ const MarqueeRow = ({ skills, reverse = false, duration = 40 }: { skills: UserPr
                 {[...skills, ...skills, ...skills].map((skill, index) => (
                     <div
                         key={`${skill.name}-${index}`}
-                        className="flex items-center gap-2 px-4 py-2 bg-neutral-100 border border-neutral-200 rounded-full hover:bg-neutral-200 transition-colors cursor-default w-fit mr-4 whitespace-nowrap"
+                        className="flex items-center gap-2 px-4 py-2 bg-white border border-neutral-200 rounded-full hover:bg-neutral-200 transition-colors cursor-default w-fit mr-4 whitespace-nowrap"
                     >
                         {skill.imageUrl && (
                             <img

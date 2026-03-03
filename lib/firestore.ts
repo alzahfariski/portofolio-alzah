@@ -1,6 +1,32 @@
 import { db } from "@/firebase/firebase.config";
-import { collection, getDocs, query, limit } from "firebase/firestore";
+import { collection, getDocs, query, limit, Timestamp } from "firebase/firestore";
 import { UserProfile, CompanyExperience, Education } from "./types";
+
+// Helper to serialize Firestore data (convert Timestamps to plain objects)
+function serializeData(data: any): any {
+  if (!data) return data;
+
+  if (data instanceof Timestamp) {
+    return {
+      seconds: data.seconds,
+      nanoseconds: data.nanoseconds,
+    };
+  }
+
+  if (Array.isArray(data)) {
+    return data.map(serializeData);
+  }
+
+  if (typeof data === 'object') {
+    const serialized: any = {};
+    for (const key in data) {
+      serialized[key] = serializeData(data[key]);
+    }
+    return serialized;
+  }
+
+  return data;
+}
 
 export async function getUserProfile(): Promise<UserProfile | null> {
   try {
@@ -9,7 +35,7 @@ export async function getUserProfile(): Promise<UserProfile | null> {
 
     if (!querySnapshot.empty) {
       const doc = querySnapshot.docs[0];
-      return doc.data() as UserProfile;
+      return serializeData(doc.data()) as UserProfile;
     }
 
     return null;
@@ -25,7 +51,7 @@ export async function getExperiences(): Promise<CompanyExperience[]> {
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      return querySnapshot.docs.map((doc) => doc.data() as CompanyExperience);
+      return querySnapshot.docs.map((doc) => serializeData(doc.data()) as CompanyExperience);
     }
 
     return [];
@@ -41,7 +67,7 @@ export async function getEducation(): Promise<Education[]> {
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      return querySnapshot.docs.map((doc) => doc.data() as Education);
+      return querySnapshot.docs.map((doc) => serializeData(doc.data()) as Education);
     }
 
     return [];
