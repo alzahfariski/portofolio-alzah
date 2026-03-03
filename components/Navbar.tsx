@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
     { name: "Home", link: "/" },
-    { name: "Project", link: "/project" },
+    { name: "Projects", link: "/project" },
 ];
 
 export default function Navbar() {
@@ -16,7 +16,7 @@ export default function Navbar() {
 
     return (
         <div className="fixed top-6 inset-x-0 max-w-fit mx-auto z-[5000]">
-            <div className="flex space-x-2 bg-neutral-900/50 dark:bg-black/50 backdrop-blur-md border border-neutral-800/50 rounded-full px-4 py-2 shadow-xl items-center justify-center">
+            <div className="flex space-x-1 bg-white backdrop-blur-xl border border-neutral-200/50 rounded-full p-2 shadow-2xl items-center justify-center">
                 {navItems.map((navItem, idx) => {
                     const isActive = pathname === navItem.link;
 
@@ -25,14 +25,17 @@ export default function Navbar() {
                             key={`link=${idx}`}
                             href={navItem.link}
                             className={cn(
-                                "relative dark:text-neutral-50 items-center flex space-x-1 text-sm font-medium hover:text-neutral-300 transition-colors px-4 py-1.5 rounded-full"
+                                "relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                                isActive 
+                                    ? "text-neutral-900 " 
+                                    : "text-neutral-500 hover:text-neutral-900 "
                             )}
                         >
                             {isActive && (
                                 <motion.span
                                     layoutId="bubble"
-                                    className="absolute inset-0 bg-neutral-500 dark:bg-neutral-800 rounded-full -z-10"
-                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                    className="absolute inset-0 bg-[#FFE500]  border border-neutral-200/50  rounded-full -z-10 shadow-sm"
+                                    transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                                 />
                             )}
                             <span className="relative z-10">{navItem.name}</span>
