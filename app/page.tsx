@@ -6,7 +6,7 @@ import { SkillCard } from "@/components/skill-card";
 import { ExperienceCard } from "@/components/experience-card";
 import { EducationCard } from "@/components/education-card";
 import { JourneyCard } from "@/components/journey-card";
-import { AwardCard } from "@/components/award-cartd";
+import { ContactCard } from "@/components/contact-card";
 
 
 export default async function Home() {
@@ -38,6 +38,7 @@ export default async function Home() {
 
           {/* Journey (R2-3, C2) */}
           <JourneyCard
+            profile={profile}
             className="md:col-span-1 md:row-span-2"
           />
 
@@ -48,7 +49,7 @@ export default async function Home() {
           />
 
           {/* Award (R4, C2-3) */}
-          <AwardCard
+          <ContactCard
             className="md:col-span-2 md:row-span-2"
           />
         </BentoGrid>

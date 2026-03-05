@@ -14,10 +14,11 @@ const cardVariants = {
 };
 
 interface JourneyCardProps {
+    profile: UserProfile | null;
     className?: string;
 }
 
-export const JourneyCard = ({ className }: JourneyCardProps) => {
+export const JourneyCard = ({ profile, className }: JourneyCardProps) => {
     return (
         <motion.div
             variants={cardVariants}
@@ -29,43 +30,10 @@ export const JourneyCard = ({ className }: JourneyCardProps) => {
                 className
             )}
         >
-            {/* Decorative Background */}
-            <div className="absolute inset-0 pointer-events-none">
-            <motion.div
-                    variants={{
-                        initial: { x: 0, y: 0, rotate: 0 },
-                        hover: { x: 30, y: -20, rotate: 90 }
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute bottom-[-10px] left-[-10px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
-                >
-                    <img
-                        src="/images/skill/skill-1.png"
-                        alt="Background 3"
-                        className="w-full h-full object-cover"
-                    />
-                </motion.div>
-
-                <motion.div
-                    variants={{
-                        initial: { x: 0, y: 0, rotate: 0 },
-                        hover: { x: -20, y: 30, rotate: -90 }
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute top-[10px] right-[10px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
-                >
-                    <img
-                        src="/images/skill/skill-2.png"
-                        alt="Background 3"
-                        className="w-full h-full object-cover"
-                    />
-                </motion.div>
-            </div>
-
             {/* Main Content Layer */}
-            <div className="relative z-10 flex flex-col h-full justify-between">
+            <div className="relative z-10 flex flex-col h-full">
                 {/* Header Section */}
-                <div className="flex items-center">
+                <div className="flex items-center mb-6">
                     <div className="bg-[#FFE500] p-2 rounded-xl shadow-sm">
                         <img
                             src="/images/skill/skill-head.png"
@@ -78,6 +46,36 @@ export const JourneyCard = ({ className }: JourneyCardProps) => {
                         <h3 className="font-bold text-lg text-neutral-800">Journey</h3>
                     </div>
                 </div>
+
+                {/* Bio Section */}
+                <div className="flex-1 overflow-y-auto custom-scrollbar pr-2">
+                    <p className="text-sm text-neutral-600 leading-relaxed font-medium">
+                        {profile?.bio || "No biography available yet."}
+                    </p>
+                </div>
+
+                {/* Socials Section */}
+                {profile?.socials && profile.socials.length > 0 && (
+                    <div className="mt-6 flex items-center gap-3">
+                        {profile.socials.map((social, index) => (
+                            <motion.a
+                                key={index}
+                                href={social.linkUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.1, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-neutral-100 shadow-sm transition-all hover:bg-neutral-50"
+                            >
+                                <img
+                                    src={social.imageUrl}
+                                    alt="Social Link"
+                                    className="w-5 h-5 object-contain"
+                                />
+                            </motion.a>
+                        ))}
+                    </div>
+                )}
             </div>
         </motion.div>
     );
