@@ -9,7 +9,7 @@ const cardVariants = {
         backgroundColor: "#F7F7F7",
     },
     hover: {
-        backgroundColor: "#FFD700", // Gold-ish for awards
+        backgroundColor: "#CBECFE", 
     },
 };
 
@@ -31,21 +31,12 @@ export const ContactCard = ({ className }: ContactCardProps) => {
         >
             {/* Header Section */}
             <div className="flex items-center mb-6 relative z-10">
-                <div className="bg-[#FFE500] p-2 rounded-xl shadow-sm">
-                    <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        width="24" 
-                        height="24" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="2" 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        className="w-5 h-5 text-neutral-800"
-                    >
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.27-2.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
+                <div className="bg-[#0074FE] p-2 rounded-xl shadow-sm">
+                     <img
+                            src="/images/contact/contact-head.png"
+                            alt="Logo"
+                            className="w-8 h-8 rounded-lg object-contain"
+                        />
                 </div>
 
                 <div className="ml-4">
@@ -53,10 +44,99 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                 </div>
             </div>
 
+            <div className="absolute inset-0 pointer-events-none hidden lg:block">
+                <motion.div
+                    variants={{
+                        initial: { x: 0, y: 0, rotate: 0 },
+                        hover: { x: 160, y: 0, rotate: -2 }
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute bottom-[170px] left-[125px] w-24 h-24 rounded-xl overflow-hidden z-11"
+                >
+                    <img
+                        src="/images/contact/cv-4.png"
+                        alt="Background 1"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+                <motion.div
+                    variants={{
+                        initial: { x: 0, y: 0, rotate: 0 },
+                        hover: { x: 80, y: 0, rotate: -2 }
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute bottom-[170px] left-[85px] w-24 h-24 rounded-xl overflow-hidden z-11"
+                >
+                    <img
+                        src="/images/contact/cv-3.png"
+                        alt="Background 1"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+                <motion.div
+                    variants={{
+                        initial: { x: 0, y: 0, rotate: 0 },
+                        hover: { x: 0, y: 0, rotate: -2 }
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute bottom-[170px] left-[45px] w-24 h-24 rounded-xl overflow-hidden z-11"
+                >
+                    <img
+                        src="/images/contact/cv-2.png"
+                        alt="Background 1"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+                <motion.div
+                    variants={{
+                        initial: { x: 0, y: 0, rotate: 0 },
+                        hover: { x: 0, y: 60, rotate: -12 }
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute bottom-[220px] right-[60px] h-20 rounded-xl overflow-hidden z-11"
+                >
+                    <img
+                        src="/images/contact/cv-7.png"
+                        alt="Background 1"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+                <motion.div
+                    variants={{
+                        initial: { x: 0, y: 0, rotate: 0 },
+                        hover: { x: 0, y: -60, rotate: 12 }
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute bottom-[220px] right-[60px] h-20 rounded-xl overflow-hidden z-11"
+                >
+                    <img
+                        src="/images/contact/cv-6.png"
+                        alt="Background 1"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+                <motion.div
+                    variants={{
+                        initial: { x: 0, y: 0, rotate: 0 },
+                        hover: { x: 0, y: 0, rotate: 0 }
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute bottom-[220px] right-[60px] h-20 rounded-xl overflow-hidden z-11"
+                >
+                    <img
+                        src="/images/contact/cv-5.png"
+                        alt="Background 1"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 relative z-10">
                 {/* CV Card */}
                 <motion.a
-                    href="#"
+                    href="https://drive.google.com/file/d/1yoZUB135W4-tWO-RI3nFBOJuzWTiAYCa/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="relative flex flex-col justify-between overflow-hidden rounded-2xl p-5 bg-white group/cv cursor-pointer border border-neutral-100 hover:border-[#FF5600] transition-all shadow-sm h-full"
@@ -85,7 +165,7 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                         </div>
 
                         <div className="flex justify-between items-end mt-4">
-                            <span className="text-[9px] text-neutral-400 font-bold uppercase tracking-tighter">PDF • 2.4 MB</span>
+                            <span className="text-[9px] text-neutral-400 font-bold uppercase tracking-tighter">Google Drive</span>
                             <div className="bg-neutral-50 p-1.5 rounded-full text-neutral-300 group-hover/cv:text-[#FF5C0C] transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                             </div>
@@ -95,7 +175,7 @@ export const ContactCard = ({ className }: ContactCardProps) => {
 
                 {/* Email Card */}
                 <motion.a
-                    href="mailto:hire@alzahfariski.com"
+                    href="mailto:alzahfariski@gmail.com"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="relative flex flex-col justify-between overflow-hidden rounded-2xl p-5 bg-white group/email cursor-pointer border border-neutral-100 hover:border-[#58CA81] transition-all shadow-sm h-full"
@@ -124,7 +204,7 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                         </div>
 
                         <div className="flex justify-between items-end mt-4">
-                            <span className="text-[9px] text-neutral-400 font-bold uppercase tracking-tighter truncate max-w-[80px]">hire@alzah...</span>
+                            <span className="text-[9px] text-neutral-400 font-bold uppercase tracking-tighter truncate">alzahfariski@gmail.com</span>
                             <div className="bg-neutral-50 p-1.5 rounded-full text-neutral-300 group-hover/email:text-[#58CA81] transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                             </div>

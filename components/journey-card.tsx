@@ -9,7 +9,7 @@ const cardVariants = {
         backgroundColor: "#F7F7F7",
     },
     hover: {
-        backgroundColor: "#E0F7FA", // Light cyan for journey
+        backgroundColor: "#FECBCF",
     },
 };
 
@@ -34,9 +34,9 @@ export const JourneyCard = ({ profile, className }: JourneyCardProps) => {
             <div className="relative z-10 flex flex-col h-full">
                 {/* Header Section */}
                 <div className="flex items-center mb-6">
-                    <div className="bg-[#FFE500] p-2 rounded-xl shadow-sm">
+                    <div className="bg-[#F10073] p-2 rounded-xl shadow-sm">
                         <img
-                            src="/images/skill/skill-head.png"
+                            src="/images/skill/journey-head.png"
                             alt="Logo"
                             className="w-8 h-8 rounded-lg object-contain"
                         />

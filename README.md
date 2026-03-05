@@ -65,7 +65,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## 📬 Contact
 
-Feel free to reach out via the contact card in the portfolio or connect with me on [LinkedIn](https://linkedin.com/in/alzahfariski).
+Feel free to reach out via the contact card in the portfolio or connect with me on [LinkedIn](https://linkedin.com/in/alzah-fariski).
 
 ---
 

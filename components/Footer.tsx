@@ -49,7 +49,7 @@ const Footer = () => {
                         onClick={spawnHeart}
                     >
                         <p className="text-neutral-800 font-medium text-base tracking-tight max-w-xs md:max-w-none hover:text-red-500 transition-colors duration-300 select-none">
-                            I hope you enjoyed exploring my portfolio! Have a fantastic day
+                            Thank you for exploring my work. Have a wonderful day!
                         </p>
                         <AnimatePresence>
                             {hearts.map((heart) => (
@@ -80,11 +80,11 @@ const Footer = () => {
 
                 {/* Links */}
                 <div className="flex items-center gap-3">
-                    <FooterLink href="https://linkedin.com/in/alzahfariski" label="LinkedIn" />
+                    <FooterLink href="https://linkedin.com/in/alzah-fariski" label="LinkedIn" />
                     <div className="w-[1px] h-4 bg-neutral-200 " />
                     <FooterLink href="https://instagram.com/alzahfariski" label="Instagram" />
                     <div className="w-[1px] h-4 bg-neutral-200 " />
-                    <FooterLink href="/cv.pdf" label="CV" isDownload />
+                    <FooterLink href="https://drive.google.com/file/d/1yoZUB135W4-tWO-RI3nFBOJuzWTiAYCa/view?usp=sharing" label="CV" isDownload />
                 </div>
 
             </div>
