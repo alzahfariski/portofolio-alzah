@@ -6,18 +6,25 @@ import { motion } from "framer-motion";
 interface ProjectCardProps {
   project: Project;
   index: number;
+  onClick?: (project: Project) => void;
 }
 
-export const ProjectCard = ({ project, index }: ProjectCardProps) => {
+export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
   return (
-    <motion.a
-      href={project.linkUrl || "#"}
-      target={project.linkUrl ? "_blank" : undefined}
-      rel="noopener noreferrer"
+    <motion.div
+      onClick={() => onClick?.(project)}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className="group block break-inside-avoid mb-5"
+      className="group block break-inside-avoid mb-5 cursor-pointer text-left w-full"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick?.(project);
+        }
+      }}
     >
       {/* Image Container */}
       <div className="relative overflow-hidden rounded-2xl bg-neutral-100">
@@ -82,6 +89,6 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
           </div>
         )}
       </div>
-    </motion.a>
+    </motion.div>
   );
 };

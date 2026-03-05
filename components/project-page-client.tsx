@@ -5,6 +5,7 @@ import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { Project } from "@/lib/types";
 import { ProjectCard } from "./project-card";
 import { ProjectFilter } from "./project-filter";
+import { ProjectModal } from "./project-modal";
 
 interface ProjectPageClientProps {
   projects: Project[];
@@ -16,6 +17,7 @@ export const ProjectPageClient = ({
   categories,
 }: ProjectPageClientProps) => {
   const [selected, setSelected] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filtered =
     selected === "All"
@@ -52,6 +54,7 @@ export const ProjectPageClient = ({
                   key={String(project.title || index) + index}
                   project={project}
                   index={index}
+                  onClick={setSelectedProject}
                 />
               ))}
             </motion.div>
@@ -111,6 +114,13 @@ export const ProjectPageClient = ({
           </div>
         </div>
       </section>
+
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </LayoutGroup>
   );
 };

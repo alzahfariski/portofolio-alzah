@@ -52,6 +52,7 @@ export interface Education {
 }
 
 export interface Project {
+  id?: string;
   title: string;
   description: string;
   category: string;
@@ -59,4 +60,14 @@ export interface Project {
   tags: string[];
   linkUrl: string;
   year: string;
+}
+
+export interface ProjectDetail extends Project {
+  fullDescription?: string;
+  gallery?: string[];
+  role?: string;
+  client?: string;
+  duration?: string;
+  technologies?: string[];
+  features?: string[];
 }
