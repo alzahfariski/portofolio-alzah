@@ -3,23 +3,21 @@
 import { UserProfile } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import SkillSection from './SkillSection';
 
 const cardVariants = {
     initial: {
         backgroundColor: "#F7F7F7",
     },
     hover: {
-        backgroundColor: "#FFF6A0",
+        backgroundColor: "#FFD700", // Gold-ish for awards
     },
 };
 
-interface SkillCardProps {
-    skills: UserProfile['skills'] | undefined;
+interface AwardCardProps {
     className?: string;
 }
 
-export const SkillCard = ({ skills, className }: SkillCardProps) => {
+export const AwardCard = ({ className }: AwardCardProps) => {
     return (
         <motion.div
             variants={cardVariants}
@@ -77,13 +75,8 @@ export const SkillCard = ({ skills, className }: SkillCardProps) => {
                     </div>
 
                     <div className="ml-4">
-                        <h3 className="font-bold text-lg text-neutral-800">Tech stack</h3>
+                        <h3 className="font-bold text-lg text-neutral-800">Awards</h3>
                     </div>
-                </div>
-
-                {/* Skill Section */}
-                <div className="flex-1 flex items-center">
-                    <SkillSection skills={skills} />
                 </div>
             </div>
         </motion.div>

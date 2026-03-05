@@ -82,7 +82,7 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                     </div>
 
                     <div className="ml-3">
-                        <h3 className="font-bold text-base text-neutral-800">Experience</h3>
+                        <h3 className="font-bold text-base text-neutral-800">Experiences</h3>
                     </div>
                 </div>
 
