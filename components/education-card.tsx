@@ -26,7 +26,7 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
             whileHover="hover"
             transition={{ duration: 0.3 }}
             className={cn(
-                "relative flex flex-col justify-between overflow-hidden rounded-3xl p-6 lg:p-8 h-full bg-[#F7F7F7] group/bento",
+                "relative flex flex-col justify-between overflow-hidden rounded-3xl p-6 min-[1371px]:p-8 h-full bg-[#F7F7F7] group/bento",
                 className
             )}
         >

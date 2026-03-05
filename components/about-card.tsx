@@ -32,7 +32,7 @@ export const AboutCard = ({ profile, className }: AboutCardProps) => {
             whileHover="hover"
             transition={{ duration: 0.3 }}
             className={cn(
-                "relative flex flex-col justify-between overflow-hidden rounded-3xl p-6 lg:p-8 h-full dark:bg-neutral-900",
+                "relative flex flex-col justify-between overflow-hidden rounded-3xl p-6 min-[1371px]:p-8 h-full dark:bg-neutral-900",
                 className
             )}
         >

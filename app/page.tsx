@@ -15,42 +15,42 @@ export default async function Home() {
   const educations = await getEducation() as Education[];
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-4 md:p-24 bg-white">
+    <main className="flex min-h-screen flex-col items-center justify-between p-4 min-[1371px]:p-24 bg-white">
       <div className="max-w-7xl w-full">
         <BentoGrid className="mx-auto">
           {/* About Section (R1-2, C1) */}
           <AboutCard
             profile={profile}
-            className="md:col-span-1 md:row-span-2"
+            className="min-[1371px]:col-span-1 min-[1371px]:row-span-2 min-h-[400px] min-[1371px]:min-h-0"
           />
 
           {/* Tech Stack (R1, C2) */}
           <SkillCard
             skills={profile?.skills}
-            className="md:col-span-1 md:row-span-1"
+            className="min-[1371px]:col-span-1 min-[1371px]:row-span-1 min-h-[250px] min-[1371px]:min-h-0"
           />
 
           {/* Experience (R1-3, C3) */}
           <ExperienceCard
             experiences={experiences}
-            className="md:col-span-1 md:row-span-3"
+            className="min-[1371px]:col-span-1 min-[1371px]:row-span-3 min-h-[500px] min-[1371px]:min-h-0"
           />
 
           {/* Journey (R2-3, C2) */}
           <JourneyCard
             profile={profile}
-            className="md:col-span-1 md:row-span-2"
+            className="min-[1371px]:col-span-1 min-[1371px]:row-span-2 min-h-[300px] min-[1371px]:min-h-0"
           />
 
           {/* Education (R3-4, C1) */}
           <EducationCard
             educations={educations}
-            className="md:col-span-1 md:row-span-3"
+            className="min-[1371px]:col-span-1 min-[1371px]:row-span-3 min-h-[400px] min-[1371px]:min-h-0"
           />
 
           {/* Award (R4, C2-3) */}
           <ContactCard
-            className="md:col-span-2 md:row-span-2"
+            className="min-[1371px]:col-span-2 min-[1371px]:row-span-2 min-h-[300px] min-[1371px]:min-h-0"
           />
         </BentoGrid>
       </div>

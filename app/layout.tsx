@@ -20,9 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${zalandoSansExpanded.className} antialiased`}>
+      <body className={`${zalandoSansExpanded.className} antialiased overflow-x-hidden flex flex-col min-h-screen`}>
         <Navbar />
-        <main className="flex-grow pt-20 md:pt-0 lg:pt-0 bg-white">
+        <main className="flex-grow pt-20 min-[1371px]:pt-0 bg-white">
           {children}
         </main>
         <Footer />

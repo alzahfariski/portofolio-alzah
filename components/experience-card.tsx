@@ -65,7 +65,7 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
             whileHover="hover"
             transition={{ duration: 0.3 }}
             className={cn(
-                "relative flex flex-col overflow-hidden rounded-3xl p-5 lg:p-6 h-full bg-[#F7F7F7] group/bento",
+                "relative flex flex-col overflow-hidden rounded-3xl p-5 min-[1371px]:p-6 h-full bg-[#F7F7F7] group/bento",
                 className
             )}
         >

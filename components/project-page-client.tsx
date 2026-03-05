@@ -38,7 +38,7 @@ export const ProjectPageClient = ({
       </section>
 
       {/* Grid Section */}
-      <section className="px-4 py-10 md:py-14">
+      <section className="px-4 py-10 min-[1371px]:py-14">
         <div className="max-w-6xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
@@ -47,7 +47,7 @@ export const ProjectPageClient = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="columns-1 sm:columns-2 lg:columns-3 gap-5"
+              className="columns-1 sm:columns-2 min-[1371px]:columns-3 gap-5"
             >
               {filtered.map((project, index) => (
                 <ProjectCard
@@ -96,7 +96,7 @@ export const ProjectPageClient = ({
       <section className="pb-16 px-4">
         <div className="max-w-6xl mx-auto flex items-center justify-center gap-8">
           <div className="text-center">
-            <p className="text-2xl md:text-3xl font-bold text-neutral-900">
+            <p className="text-2xl min-[1371px]:text-3xl font-bold text-neutral-900">
               {projects.length}
             </p>
             <p className="text-xs text-neutral-500 mt-1 uppercase tracking-wider">
@@ -105,7 +105,7 @@ export const ProjectPageClient = ({
           </div>
           <div className="w-px h-10 bg-neutral-200" />
           <div className="text-center">
-            <p className="text-2xl md:text-3xl font-bold text-neutral-900">
+            <p className="text-2xl min-[1371px]:text-3xl font-bold text-neutral-900">
               {categories.length - 1}
             </p>
             <p className="text-xs text-neutral-500 mt-1 uppercase tracking-wider">

@@ -25,7 +25,7 @@ export const ContactCard = ({ className }: ContactCardProps) => {
             whileHover="hover"
             transition={{ duration: 0.3 }}
             className={cn(
-                "relative flex flex-col overflow-hidden rounded-3xl p-6 lg:p-8 h-full bg-[#F7F7F7] group/bento",
+                "relative flex flex-col overflow-hidden rounded-3xl p-6 min-[1371px]:p-8 h-full bg-[#F7F7F7] group/bento",
                 className
             )}
         >
@@ -44,7 +44,7 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                 </div>
             </div>
 
-            <div className="absolute inset-0 pointer-events-none hidden lg:block">
+            <div className="absolute inset-0 pointer-events-none hidden min-[1371px]:block">
                 <motion.div
                     variants={{
                         initial: { x: 0, y: 0, rotate: 0 },
@@ -90,10 +90,10 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                 <motion.div
                     variants={{
                         initial: { x: 0, y: 0, rotate: 0 },
-                        hover: { x: 0, y: 60, rotate: -12 }
+                        hover: { x: 145, y: 0, rotate: -2 }
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute bottom-[220px] right-[60px] h-20 rounded-xl overflow-hidden z-11"
+                    className="absolute bottom-[170px] left-[540px] h-24 rounded-xl overflow-hidden z-11"
                 >
                     <img
                         src="/images/contact/cv-7.png"
@@ -104,10 +104,10 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                 <motion.div
                     variants={{
                         initial: { x: 0, y: 0, rotate: 0 },
-                        hover: { x: 0, y: -60, rotate: 12 }
+                        hover: { x: 70, y: 0, rotate: -2 }
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute bottom-[220px] right-[60px] h-20 rounded-xl overflow-hidden z-11"
+                    className="absolute bottom-[170px] left-[495px] h-24 rounded-xl overflow-hidden z-11"
                 >
                     <img
                         src="/images/contact/cv-6.png"
@@ -118,10 +118,10 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                 <motion.div
                     variants={{
                         initial: { x: 0, y: 0, rotate: 0 },
-                        hover: { x: 0, y: 0, rotate: 0 }
+                        hover: { x: 0, y: 0, rotate: -2 }
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute bottom-[220px] right-[60px] h-20 rounded-xl overflow-hidden z-11"
+                    className="absolute bottom-[170px] left-[450px] h-24 rounded-xl overflow-hidden z-11"
                 >
                     <img
                         src="/images/contact/cv-5.png"
