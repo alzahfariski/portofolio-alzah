@@ -1,6 +1,6 @@
 import { db } from "@/firebase/firebase.config";
 import { collection, getDocs, query, limit, Timestamp } from "firebase/firestore";
-import { UserProfile, CompanyExperience, Education } from "./types";
+import { UserProfile, CompanyExperience, Education, Project } from "./types";
 
 // Helper to serialize Firestore data (convert Timestamps to plain objects)
 function serializeData(data: any): any {
@@ -73,6 +73,22 @@ export async function getEducation(): Promise<Education[]> {
     return [];
   } catch (error) {
     console.error("Error fetching education:", error);
+    return [];
+  }
+}
+
+export async function getProjects(): Promise<Project[]> {
+  try {
+    const q = query(collection(db, "projects"));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      return querySnapshot.docs.map((doc) => serializeData(doc.data()) as Project);
+    }
+
+    return [];
+  } catch (error) {
+    console.error("Error fetching projects:", error);
     return [];
   }
 }

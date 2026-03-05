@@ -50,3 +50,13 @@ export interface Education {
   degree: string;
   activities: string[];
 }
+
+export interface Project {
+  title: string;
+  description: string;
+  category: string;
+  imageUrl: string;
+  tags: string[];
+  linkUrl: string;
+  year: string;
+}
