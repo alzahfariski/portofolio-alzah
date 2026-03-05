@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${zalandoSansExpanded.className} antialiased`}>
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow pt-20 md:pt-0 lg:pt-0 bg-white">
           {children}
         </main>
         <Footer />

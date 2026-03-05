@@ -44,12 +44,12 @@ export default async function Home() {
           {/* Education (R3-4, C1) */}
           <EducationCard
             educations={educations}
-            className="md:col-span-1 md:row-span-2"
+            className="md:col-span-1 md:row-span-3"
           />
 
           {/* Award (R4, C2-3) */}
           <AwardCard
-            className="md:col-span-2 md:row-span-1"
+            className="md:col-span-2 md:row-span-2"
           />
         </BentoGrid>
       </div>

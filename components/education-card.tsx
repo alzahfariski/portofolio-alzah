@@ -9,7 +9,7 @@ const cardVariants = {
         backgroundColor: "#F7F7F7",
     },
     hover: {
-        backgroundColor: "#E3F2FD",
+        backgroundColor: "#B0F9B5",
     },
 };
 
@@ -35,10 +35,40 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                 <motion.div
                     variants={{
                         initial: { x: 0, y: 0, rotate: 0 },
-                        hover: { x: 30, y: -20, rotate: 90 }
+                        hover: { x: 105, y: 0, rotate: 0 }
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute bottom-[-10px] left-[-10px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
+                    className="absolute bottom-[30px] left-[90px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
+                >
+                    <img
+                        src="/images/edu/edu-5.png"
+                        alt="Background 3"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+
+                <motion.div
+                    variants={{
+                        initial: { x: 0, y: 0, rotate: 0 },
+                        hover: { x: 80, y: 0, rotate: 0 }
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute bottom-[30px] left-[70px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
+                >
+                    <img
+                        src="/images/edu/edu-4.png"
+                        alt="Background 3"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+
+                <motion.div
+                    variants={{
+                        initial: { x: 0, y: 0, rotate: 0 },
+                        hover: { x: 60, y: 0, rotate: 0 }
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute bottom-[30px] left-[50px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
                 >
                     <img
                         src="/images/edu/edu-1.png"
@@ -50,10 +80,10 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                 <motion.div
                     variants={{
                         initial: { x: 0, y: 0, rotate: 0 },
-                        hover: { x: -20, y: 30, rotate: -90 }
+                        hover: { x: 40, y: 0, rotate: 0 }
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute top-[10px] right-[10px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
+                    className="absolute bottom-[30px] left-[30px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
                 >
                     <img
                         src="/images/edu/edu-2.png"
@@ -61,13 +91,30 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
+
+                <motion.div
+                    variants={{
+                        initial: { x: 0, y: 0, rotate: 0 },
+                        hover: { x: 20, y: 0, rotate: 0 }
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute bottom-[30px] left-[10px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
+                >
+                    <img
+                        src="/images/edu/edu-3.png"
+                        alt="Background 3"
+                        className="w-full h-full object-cover"
+                    />
+                </motion.div>
+
+                
             </div>
 
             {/* Main Content Layer */}
             <div className="relative z-10 flex flex-col h-full justify-between">
                 {/* Header Section */}
                 <div className="flex items-center">
-                    <div className="bg-[#FFE500] p-2 rounded-xl shadow-sm">
+                    <div className="bg-[#58CA81] p-2 rounded-xl shadow-sm">
                         <img
                             src="/images/edu/edu-head.png"
                             alt="Logo"
@@ -88,7 +135,18 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                                 <span className="text-[10px] font-medium text-neutral-400">{edu.period}</span>
                             </div>
                             <p className="text-xs text-neutral-600 font-medium">{edu.degree}</p>
-                            <p className="text-[10px] text-neutral-400 italic">GPA: {edu.gpa}</p>
+                            {edu.activities && edu.activities.length > 0 && (
+                                <div className="mt-1.5 flex flex-wrap gap-1">
+                                    {edu.activities.map((activity, actIndex) => (
+                                        <span 
+                                            key={actIndex} 
+                                            className="text-[9px] leading-tight text-neutral-500 px-2 py-0.5"
+                                        >
+                                            {activity}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

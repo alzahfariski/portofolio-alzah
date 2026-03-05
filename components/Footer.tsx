@@ -30,11 +30,11 @@ const Footer = () => {
     };
 
     return (
-        <footer className="w-full py-10 px-6 border-t border-neutral-100 dark:border-neutral-900 relative">
+        <footer className="w-full py-10 px-6 border-t border-neutral-100 bg-white relative">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
 
                 {/* Copyright */}
-                <div className="text-neutral-500 dark:text-neutral-400 font-medium tracking-tight text-sm">
+                <div className="text-neutral-500 font-medium tracking-tight text-sm">
                     ⓒ {currentYear}
                 </div>
 
@@ -48,7 +48,7 @@ const Footer = () => {
                         onMouseMove={handleMouseMove}
                         onClick={spawnHeart}
                     >
-                        <p className="text-neutral-800 dark:text-neutral-200 font-medium text-base tracking-tight max-w-xs md:max-w-none hover:text-red-500 dark:hover:text-red-400 transition-colors duration-300 select-none">
+                        <p className="text-neutral-800 font-medium text-base tracking-tight max-w-xs md:max-w-none hover:text-red-500 transition-colors duration-300 select-none">
                             I hope you enjoyed exploring my portfolio! Have a fantastic day
                         </p>
                         <AnimatePresence>
@@ -81,9 +81,9 @@ const Footer = () => {
                 {/* Links */}
                 <div className="flex items-center gap-3">
                     <FooterLink href="https://linkedin.com/in/alzahfariski" label="LinkedIn" />
-                    <div className="w-[1px] h-4 bg-neutral-200 dark:bg-neutral-800" />
+                    <div className="w-[1px] h-4 bg-neutral-200 " />
                     <FooterLink href="https://instagram.com/alzahfariski" label="Instagram" />
-                    <div className="w-[1px] h-4 bg-neutral-200 dark:bg-neutral-800" />
+                    <div className="w-[1px] h-4 bg-neutral-200 " />
                     <FooterLink href="/cv.pdf" label="CV" isDownload />
                 </div>
 
@@ -99,7 +99,7 @@ const FooterLink = ({ href, label, isDownload }: { href: string, label: string, 
         target="_blank"
         rel="noopener noreferrer"
         download={isDownload}
-        className="text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors px-3 py-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800"
+        className="text-sm font-medium text-neutral-500  hover:text-neutral-800 transition-colors px-3 py-1 rounded-full hover:bg-neutral-100 "
     >
         {label}
     </a>

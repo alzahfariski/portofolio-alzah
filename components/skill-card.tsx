@@ -36,10 +36,10 @@ export const SkillCard = ({ skills, className }: SkillCardProps) => {
             <motion.div
                     variants={{
                         initial: { x: 0, y: 0, rotate: 0 },
-                        hover: { x: 30, y: -20, rotate: 90 }
+                        hover: { x: -20, y: 20, rotate: 0 }
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute bottom-[-10px] left-[-10px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
+                    className="absolute top-[10px] right-[60px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
                 >
                     <img
                         src="/images/skill/skill-1.png"
@@ -51,7 +51,7 @@ export const SkillCard = ({ skills, className }: SkillCardProps) => {
                 <motion.div
                     variants={{
                         initial: { x: 0, y: 0, rotate: 0 },
-                        hover: { x: -20, y: 30, rotate: -90 }
+                        hover: { x: -20, y: 20, rotate: 0 }
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute top-[10px] right-[10px] w-12 h-12 md:w-12 md:h-12 rounded-xl overflow-hidden z-12"
