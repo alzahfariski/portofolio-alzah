@@ -11,6 +11,8 @@ const navItems = [
     { name: "Projects", link: "/project" },
 ];
 
+
+
 export default function Navbar() {
     const pathname = usePathname();
 

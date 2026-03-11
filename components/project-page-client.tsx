@@ -44,6 +44,9 @@ export const ProjectPageClient = ({
 
   return (
     <LayoutGroup>
+      {/* Background for mobile/tablet behind navbar to prevent content showing through */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 h-[72px] bg-white z-40" />
+
       {/* Mobile/Tablet Filter Section (Hidden on Desktop viewport >= lg) */}
       <section className="lg:hidden mt-20 sticky top-[72px] z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 py-3 px-4">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center gap-4">
