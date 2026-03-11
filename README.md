@@ -2,7 +2,7 @@
 
 A premium, interactive portfolio built with Next.js 15, featuring a dynamic Bento Grid layout and smooth micro-animations. This project showcases my journey, skills, and professional experience as a Software Developer.
 
-![Portfolio Preview](/public/images/about/bg-about.png)
+![Portfolio Preview](/public/img/preview.png)
 
 ## 🚀 Features
 
