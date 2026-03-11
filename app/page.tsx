@@ -8,6 +8,7 @@ import { EducationCard } from "@/components/education-card";
 import { JourneyCard } from "@/components/journey-card";
 import { ContactCard } from "@/components/contact-card";
 
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const profile = await getUserProfile() as UserProfile | null;

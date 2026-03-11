@@ -2,6 +2,7 @@ import { getProjects } from "@/lib/firestore";
 import { Project } from "@/lib/types";
 import { ProjectPageClient } from "@/components/project-page-client";
 
+export const dynamic = "force-dynamic";
 export default async function ProjectPage() {
   const firestoreProjects = await getProjects();
 
