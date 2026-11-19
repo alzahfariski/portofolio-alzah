@@ -12,6 +12,13 @@ const caveat = Caveat({
     weight: ["400", "700"],
 });
 
+// Nilai tanggal dari Firestore setelah diserialisasi ({seconds}) atau string/Date.
+type DateLike = { seconds: number } | string | number | Date | null | undefined;
+const toDate = (v: DateLike): Date =>
+    v && typeof v === "object" && !(v instanceof Date) && "seconds" in v
+        ? new Date(v.seconds * 1000)
+        : new Date(v as string | number | Date);
+
 const cardVariants = {
     initial: {
         backgroundColor: "#F7F7F7",
@@ -28,27 +35,26 @@ interface ExperienceCardProps {
 
 export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) => {
     // Helper to format date
-    const formatDate = (dateValue: any) => {
+    // Zona waktu dikunci ke UTC (sama dengan server Vercel) supaya HTML server dan browser identik
+    // (sebelumnya zona waktu browser berbeda dapat menggeser bulan -> hydration mismatch #418).
+    const formatDate = (dateValue: DateLike) => {
         if (!dateValue) return 'Present';
-        const date = dateValue.seconds
-            ? new Date(dateValue.seconds * 1000)
-            : new Date(dateValue);
+        const date = toDate(dateValue);
 
         return date.toLocaleDateString('en-US', {
             month: 'short',
             year: 'numeric',
+            timeZone: 'UTC',
         });
     };
 
     // Helper to calculate duration
-    const calculateDuration = (start: any, end: any) => {
-        const startDate = start?.seconds ? new Date(start.seconds * 1000) : new Date(start);
-        const endDate = end
-            ? (end.seconds ? new Date(end.seconds * 1000) : new Date(end))
-            : new Date();
+    const calculateDuration = (start: DateLike, end: DateLike) => {
+        const startDate = toDate(start);
+        const endDate = end ? toDate(end) : new Date();
 
-        let totalMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12;
-        totalMonths += endDate.getMonth() - startDate.getMonth();
+        let totalMonths = (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12;
+        totalMonths += endDate.getUTCMonth() - startDate.getUTCMonth();
         totalMonths += 1;
 
         const years = Math.floor(totalMonths / 12);

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
-    const [hearts, setHearts] = useState<{ id: number; x: number; y: number }[]>([]);
+    const [hearts, setHearts] = useState<{ id: number; x: number; y: number; rise: number; drift: number }[]>([]);
     const textRef = useRef<HTMLDivElement>(null);
 
     const spawnHeart = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -17,7 +17,11 @@ const Footer = () => {
 
         const id = Date.now() + Math.random();
 
-        setHearts((prev) => [...prev, { id, x, y }]);
+        // Nilai acak dibuat di event handler (bukan saat render) agar render tetap murni.
+        const rise = 100 + Math.random() * 50;
+        const drift = (Math.random() - 0.5) * 50;
+
+        setHearts((prev) => [...prev, { id, x, y, rise, drift }]);
         setTimeout(() => {
             setHearts((prev) => prev.filter((h) => h.id !== id));
         }, 2000); // Remove heart after 2 seconds
@@ -35,7 +39,8 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <div className="text-neutral-500 font-medium tracking-tight text-sm">
-                    ⓒ {currentYear}
+                    {/* suppressHydrationWarning: tahun di HTML hasil ISR bisa beda dengan browser saat pergantian tahun */}
+                    <span suppressHydrationWarning>ⓒ {currentYear}</span>
                 </div>
 
                 {/* Message */}
@@ -58,8 +63,8 @@ const Footer = () => {
                                     initial={{ opacity: 1, y: 0, x: 0, scale: 0.5 }}
                                     animate={{
                                         opacity: 0,
-                                        y: -100 - Math.random() * 50, // Fly up variably
-                                        x: (Math.random() - 0.5) * 50, // Drift left/right
+                                        y: -heart.rise, // Fly up variably
+                                        x: heart.drift, // Drift left/right
                                         scale: 1.5
                                     }}
                                     exit={{ opacity: 0 }}
