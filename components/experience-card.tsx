@@ -106,10 +106,10 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                              <div className="absolute -left-[4.5px] top-0 w-2 h-2 rounded-full bg-neutral-300 group-hover/item:bg-[#FF5C0C] transition-colors" />
 
                             <div className="flex items-center justify-between">
-                                <span className="text-[9px] font-bold text-neutral-400 uppercase tracking-widest">
+                                <span className="text-xs font-bold text-neutral-600 uppercase tracking-widest">
                                     {exp.type}
                                 </span>
-                                <span className="text-[9px] font-bold text-neutral-400">
+                                <span className="text-xs font-bold text-neutral-600">
                                     {calculateDuration(exp.periodStart, exp.periodEnd)}
                                 </span>
                             </div>
@@ -139,7 +139,7 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                                             <span className="text-xs text-neutral-700 font-bold leading-none">
                                                 {role.role}
                                             </span>
-                                            <span className="text-[8px] text-neutral-400 font-medium whitespace-nowrap ml-2">
+                                            <span className="text-xs text-neutral-600 font-medium whitespace-nowrap ml-2">
                                                 {formatDate(role.periodStart)} — {formatDate(role.periodEnd)}
                                             </span>
                                         </div>
@@ -147,7 +147,7 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                                         {role.description && (
                                             <ul className="flex flex-col gap-1.5 mt-1">
                                                 {role.description.split('•').filter(p => p.trim()).map((point, pIndex) => (
-                                                    <li key={pIndex} className="text-[10px] text-neutral-500 leading-relaxed flex gap-2">
+                                                    <li key={pIndex} className="text-xs text-neutral-700 leading-relaxed flex gap-2">
                                                         <span className="text-[#FF5C0C]/50 mt-0.5">•</span>
                                                         <span>{point.trim()}</span>
                                                     </li>
@@ -163,7 +163,7 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
 
                 {/* Footer/More CTA */}
                 <div className="mt-3 flex justify-end items-center">
-                    <span className={`text-lg text-neutral-400 italic ${caveat.className}`}>
+                    <span className={`text-lg text-neutral-600 italic ${caveat.className}`}>
                         and more professional journey...
                     </span>
                 </div>
