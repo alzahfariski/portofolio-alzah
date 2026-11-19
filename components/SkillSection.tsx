@@ -3,6 +3,8 @@
 import React from 'react';
 import { UserProfile } from '@/lib/types';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { skipOptimize } from '@/lib/images';
 
 interface SkillSectionProps {
     skills: UserProfile['skills'] | undefined;
@@ -29,9 +31,14 @@ const MarqueeRow = ({ skills, reverse = false, duration = 40 }: { skills: UserPr
                         className="flex items-center gap-2 px-4 py-2 bg-white border border-neutral-200 rounded-full hover:bg-neutral-200 transition-colors cursor-default w-fit mr-4 whitespace-nowrap"
                     >
                         {skill.imageUrl && (
-                            <img
+                            <Image
                                 src={skill.imageUrl}
-                                alt={skill.name}
+                                alt=""
+                                aria-hidden="true"
+                                width={20}
+                                height={20}
+                                sizes="20px"
+                                unoptimized={skipOptimize(skill.imageUrl)}
                                 className="w-5 h-5 object-contain"
                             />
                         )}

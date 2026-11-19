@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { skipOptimize } from "@/lib/images";
 import { Project, ProjectDetail } from "@/lib/types";
 import { getProjectDetail } from "@/lib/firestore";
 
@@ -81,10 +83,13 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
 
             {/* Header / Hero Image */}
             <div className="relative w-full h-64 sm:h-80 md:h-96 bg-neutral-100 shrink-0">
-              <img
+              <Image
                 src={project.imageUrl}
-                alt={project.title}
-                className="w-full h-full object-cover"
+                alt={typeof project.title === "string" ? project.title : "Project"}
+                fill
+                unoptimized={skipOptimize(project.imageUrl)}
+                sizes="(max-width: 896px) 100vw, 896px"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
@@ -203,7 +208,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                       <h3 className="text-xl font-semibold mb-4 text-neutral-900">Gallery</h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {details.gallery.map((img, i) => (
-                          <img key={i} src={img} alt={`Gallery ${i}`} className="w-full h-auto rounded-xl border border-neutral-100 object-cover" />
+                          <Image key={i} src={img} alt={`Galeri ${typeof project.title === "string" ? project.title : "proyek"} ${i + 1}`} width={800} height={600} sizes="(max-width: 640px) 100vw, 400px" unoptimized={skipOptimize(img)} className="w-full h-auto rounded-xl border border-neutral-100 object-cover" />
                         ))}
                       </div>
                     </section>

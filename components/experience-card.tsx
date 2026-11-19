@@ -3,6 +3,8 @@
 import { CompanyExperience } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { skipOptimize, localLogo } from "@/lib/images";
 import { Caveat } from "next/font/google";
 
 const caveat = Caveat({
@@ -74,9 +76,13 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                 {/* Header Section */}
                 <div className="flex items-center">
                     <div className="bg-[#FF5C0C] p-2 rounded-xl shadow-sm">
-                        <img
+                        <Image
                             src="/images/work/work-head.png"
-                            alt="Logo"
+                            alt=""
+                            aria-hidden="true"
+                            width={100}
+                            height={100}
+                            sizes="28px"
                             className="w-7 h-7 rounded-lg object-contain"
                         />
                     </div>
@@ -104,9 +110,13 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                             
                             <div className="flex items-center gap-2 -mt-1">
                                 {exp.imageUrl && (
-                                    <img
-                                        src={Array.isArray(exp.imageUrl) ? exp.imageUrl[0] : exp.imageUrl}
-                                        alt={exp.company}
+                                    <Image
+                                        src={localLogo(Array.isArray(exp.imageUrl) ? exp.imageUrl[0] : exp.imageUrl)}
+                                        alt={`Logo ${exp.company}`}
+                                        width={20}
+                                        height={20}
+                                        sizes="20px"
+                                        unoptimized={skipOptimize(Array.isArray(exp.imageUrl) ? exp.imageUrl[0] : exp.imageUrl)}
                                         className="w-5 h-5 object-contain rounded-md bg-white p-0.5 border border-neutral-100"
                                     />
                                 )}

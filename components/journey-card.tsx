@@ -3,6 +3,8 @@
 import { UserProfile } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { skipOptimize, socialLabel } from '@/lib/images';
 
 const cardVariants = {
     initial: {
@@ -35,9 +37,13 @@ export const JourneyCard = ({ profile, className }: JourneyCardProps) => {
                 {/* Header Section */}
                 <div className="flex items-center mb-6">
                     <div className="bg-[#F10073] p-2 rounded-xl shadow-sm">
-                        <img
+                        <Image
                             src="/images/skill/journey-head.png"
-                            alt="Logo"
+                            alt=""
+                            aria-hidden="true"
+                            width={100}
+                            height={100}
+                            sizes="32px"
                             className="w-8 h-8 rounded-lg object-contain"
                         />
                     </div>
@@ -61,15 +67,21 @@ export const JourneyCard = ({ profile, className }: JourneyCardProps) => {
                             <motion.a
                                 key={index}
                                 href={social.linkUrl}
+                                aria-label={socialLabel(social.linkUrl)}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 whileHover={{ scale: 1.1, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-neutral-100 shadow-sm transition-all hover:bg-neutral-50"
                             >
-                                <img
+                                <Image
                                     src={social.imageUrl}
-                                    alt="Social Link"
+                                    alt=""
+                                    aria-hidden="true"
+                                    width={20}
+                                    height={20}
+                                    sizes="20px"
+                                    unoptimized={skipOptimize(social.imageUrl)}
                                     className="w-5 h-5 object-contain"
                                 />
                             </motion.a>

@@ -2,6 +2,8 @@
 
 import { Project } from "@/lib/types";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { skipOptimize } from "@/lib/images";
 
 interface ProjectCardProps {
   project: Project;
@@ -28,9 +30,14 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
     >
       {/* Image Container */}
       <div className="relative overflow-hidden rounded-2xl bg-neutral-100">
-        <img
+        <Image
           src={project.imageUrl}
-          alt={project.title}
+          alt={typeof project.title === "string" ? project.title : "Project"}
+          width={800}
+          height={600}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={index < 2}
+          unoptimized={skipOptimize(project.imageUrl)}
           className="w-full h-auto object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />
 

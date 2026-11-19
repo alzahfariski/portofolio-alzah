@@ -3,6 +3,7 @@
 import { UserProfile } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Caveat } from "next/font/google";
 
 const caveat = Caveat({
@@ -47,9 +48,13 @@ export const AboutCard = ({ profile, className }: AboutCardProps) => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute top-[-100px] right-[10px] w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden z-11"
                 >
-                    <img
-                        src="/images/about/about-3.png"
-                        alt="Background 1"
+                    <Image
+                        src="/images/about/about-3.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={224}
+                        height={224}
+                        sizes="160px"
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
@@ -63,9 +68,13 @@ export const AboutCard = ({ profile, className }: AboutCardProps) => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute bottom-[80px] left-[-120px] w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden z-11"
                 >
-                    <img
-                        src="/images/about/about-2.png"
-                        alt="Background 2"
+                    <Image
+                        src="/images/about/about-2.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={224}
+                        height={224}
+                        sizes="160px"
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
@@ -80,9 +89,13 @@ export const AboutCard = ({ profile, className }: AboutCardProps) => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute bottom-[-20px] right-[-40px] w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden z-12"
                 >
-                    <img
-                        src="/images/about/about-1.png"
-                        alt="Background 3"
+                    <Image
+                        src="/images/about/about-1.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={224}
+                        height={224}
+                        sizes="160px"
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
@@ -94,9 +107,13 @@ export const AboutCard = ({ profile, className }: AboutCardProps) => {
                 {/* Header Section */}
                 <div className="flex items-center">
                     <div className="bg-[#A786FF] p-2 rounded-xl shadow-sm">
-                        <img
+                        <Image
                             src="/images/about/about-head.png"
-                            alt="Logo"
+                            alt=""
+                            aria-hidden="true"
+                            width={100}
+                            height={100}
+                            sizes="32px"
                             className="w-8 h-8 rounded-lg object-contain"
                         />
                     </div>
@@ -112,9 +129,14 @@ export const AboutCard = ({ profile, className }: AboutCardProps) => {
                     className="self-center mt-8 relative"
                 >
                     <div className="relative w-full max-w-sm aspect-[1.6/1] rounded-2xl overflow-hidden shadow-sm">
-                        <img
-                            src="/images/about/bg-about.png"
-                            alt="Main Visual"
+                        <Image
+                            src="/images/about/bg-about.webp"
+                            alt=""
+                            aria-hidden="true"
+                            width={800}
+                            height={501}
+                            sizes="(max-width: 384px) 100vw, 384px"
+                            priority
                             className="w-full h-full object-cover"
                         />
 
