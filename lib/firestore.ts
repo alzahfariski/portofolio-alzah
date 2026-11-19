@@ -2,6 +2,17 @@ import { db } from "@/firebase/firebase.config";
 import { collection, getDocs, query, limit, Timestamp, doc, getDoc } from "firebase/firestore";
 import { UserProfile, CompanyExperience, Education, Project, ProjectDetail } from "./types";
 
+const FIRESTORE_TIMEOUT_MS = 8000;
+
+// Batasi waktu tunggu Firestore; bila lewat, tolak agar pemanggil memakai data kosong (fallback).
+function withTimeout<T>(promise: Promise<T>, ms = FIRESTORE_TIMEOUT_MS): Promise<T> {
+  let timer: ReturnType<typeof setTimeout>;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`Firestore timeout setelah ${ms} ms`)), ms);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+}
+
 // Helper to serialize Firestore data (convert Timestamps to plain objects)
 function serializeData(data: any): any {
   if (!data) return data;
@@ -31,7 +42,7 @@ function serializeData(data: any): any {
 export async function getUserProfile(): Promise<UserProfile | null> {
   try {
     const q = query(collection(db, "profile"), limit(1));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await withTimeout(getDocs(q));
 
     if (!querySnapshot.empty) {
       const doc = querySnapshot.docs[0];
@@ -48,7 +59,7 @@ export async function getUserProfile(): Promise<UserProfile | null> {
 export async function getExperiences(): Promise<CompanyExperience[]> {
   try {
     const q = query(collection(db, "experiences"));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await withTimeout(getDocs(q));
 
     if (!querySnapshot.empty) {
       return querySnapshot.docs.map((doc) => serializeData(doc.data()) as CompanyExperience);
@@ -64,7 +75,7 @@ export async function getExperiences(): Promise<CompanyExperience[]> {
 export async function getEducation(): Promise<Education[]> {
   try {
     const q = query(collection(db, "educations"));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await withTimeout(getDocs(q));
 
     if (!querySnapshot.empty) {
       return querySnapshot.docs.map((doc) => serializeData(doc.data()) as Education);
@@ -80,7 +91,7 @@ export async function getEducation(): Promise<Education[]> {
 export async function getProjects(): Promise<Project[]> {
   try {
     const q = query(collection(db, "projects"));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await withTimeout(getDocs(q));
 
     if (!querySnapshot.empty) {
       return querySnapshot.docs.map((docSnapshot) => {
@@ -99,7 +110,7 @@ export async function getProjects(): Promise<Project[]> {
 export async function getProjectDetail(id: string): Promise<ProjectDetail | null> {
   try {
     const docRef = doc(db, "projectDetails", id);
-    const docSnap = await getDoc(docRef);
+    const docSnap = await withTimeout(getDoc(docRef));
 
     if (docSnap.exists()) {
       const data = serializeData(docSnap.data()) as ProjectDetail;

@@ -2,7 +2,8 @@ import { getProjects } from "@/lib/firestore";
 import { Project } from "@/lib/types";
 import { ProjectPageClient } from "@/components/project-page-client";
 
-export const dynamic = "force-dynamic";
+// ISR: halaman dibuat ulang tiap 1 jam (sebelumnya force-dynamic: tiap kunjungan menunggu Firestore).
+export const revalidate = 3600;
 export default async function ProjectPage() {
   const firestoreProjects = await getProjects();
 

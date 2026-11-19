@@ -8,7 +8,8 @@ import { EducationCard } from "@/components/education-card";
 import { JourneyCard } from "@/components/journey-card";
 import { ContactCard } from "@/components/contact-card";
 
-export const dynamic = "force-dynamic";
+// ISR: halaman dibuat ulang tiap 1 jam (sebelumnya force-dynamic: tiap kunjungan menunggu Firestore).
+export const revalidate = 3600;
 
 export default async function Home() {
   const profile = await getUserProfile() as UserProfile | null;
