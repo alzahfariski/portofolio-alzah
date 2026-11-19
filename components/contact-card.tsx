@@ -1,6 +1,5 @@
 'use client';
 
-import { UserProfile } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -244,7 +243,7 @@ export const ContactCard = ({ className }: ContactCardProps) => {
             
             {/* Minimal Footer */}
             <div className="mt-6 flex justify-center relative z-10 border-t border-neutral-100 pt-4">
-                <p className="text-[10px] text-neutral-400 font-medium uppercase tracking-widest">Let's work together</p>
+                <p className="text-[10px] text-neutral-400 font-medium uppercase tracking-widest">Let&apos;s work together</p>
             </div>
         </motion.div>
     );

@@ -1,4 +1,4 @@
-import { BentoGrid, BentoGridItem } from "@/components/bento-grid";
+import { BentoGrid } from "@/components/bento-grid";
 import { AboutCard } from "@/components/about-card";
 import { getUserProfile, getExperiences, getEducation } from "@/lib/firestore";
 import { CompanyExperience, Education, UserProfile } from "@/lib/types";

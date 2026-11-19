@@ -1,5 +1,4 @@
 import { getProjects } from "@/lib/firestore";
-import { Project } from "@/lib/types";
 import { ProjectPageClient } from "@/components/project-page-client";
 
 // ISR: halaman dibuat ulang tiap 1 jam (sebelumnya force-dynamic: tiap kunjungan menunggu Firestore).

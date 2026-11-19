@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { skipOptimize } from "@/lib/images";
+import { formatYear } from "@/lib/utils";
 import { Project, ProjectDetail } from "@/lib/types";
 import { getProjectDetail } from "@/lib/firestore";
 
@@ -14,20 +15,25 @@ interface ProjectModalProps {
 }
 
 export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
-  const [details, setDetails] = useState<ProjectDetail | null>(null);
-  const [loading, setLoading] = useState(false);
+  // Hasil dimuat disimpan bersama id proyeknya; "loading" dan "details" diturunkan saat render
+  // (tanpa setState sinkron di dalam effect).
+  const [result, setResult] = useState<{ id: string; data: ProjectDetail | null } | null>(null);
+
+  const projectId = isOpen ? project?.id : undefined;
+  const hasResult = !!projectId && result?.id === projectId;
+  const loading = !!projectId && !hasResult;
+  const details = hasResult ? result.data : null;
 
   useEffect(() => {
-    if (isOpen && project?.id) {
-      setLoading(true);
-      getProjectDetail(project.id).then((data) => {
-        setDetails(data);
-        setLoading(false);
-      });
-    } else {
-      setDetails(null);
-    }
-  }, [isOpen, project]);
+    if (!projectId) return;
+    let cancelled = false;
+    getProjectDetail(projectId).then((data) => {
+      if (!cancelled) setResult({ id: projectId, data });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [projectId]);
 
   // Handle escape key
   useEffect(() => {
@@ -110,9 +116,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                   <span>{project.category}</span>
                   <span>•</span>
                   <span>
-                    {project.year && typeof project.year === 'object' && (project.year as any).seconds 
-                      ? new Date((project.year as any).seconds * 1000).getFullYear()
-                      : String(project.year || '')}
+                    {formatYear(project.year)}
                   </span>
                 </div>
               </div>
@@ -218,7 +222,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
               ) : (
                 <div className="py-12 text-center text-neutral-500">
                   <p className="text-lg mb-2 text-neutral-800 font-medium">Detailed information is not available yet.</p>
-                  <p className="text-sm">We're still preparing the detailed case study for this project. Keep an eye out for updates!</p>
+                  <p className="text-sm">We&apos;re still preparing the detailed case study for this project. Keep an eye out for updates!</p>
                 </div>
               )}
             </div>

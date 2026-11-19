@@ -14,7 +14,7 @@ function withTimeout<T>(promise: Promise<T>, ms = FIRESTORE_TIMEOUT_MS): Promise
 }
 
 // Helper to serialize Firestore data (convert Timestamps to plain objects)
-function serializeData(data: any): any {
+function serializeData(data: unknown): unknown {
   if (!data) return data;
 
   if (data instanceof Timestamp) {
@@ -29,9 +29,9 @@ function serializeData(data: any): any {
   }
 
   if (typeof data === 'object') {
-    const serialized: any = {};
-    for (const key in data) {
-      serialized[key] = serializeData(data[key]);
+    const serialized: Record<string, unknown> = {};
+    for (const [key, value] of Object.entries(data)) {
+      serialized[key] = serializeData(value);
     }
     return serialized;
   }

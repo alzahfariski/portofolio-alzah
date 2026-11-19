@@ -4,6 +4,7 @@ import { Project } from "@/lib/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { skipOptimize } from "@/lib/images";
+import { formatYear } from "@/lib/utils";
 
 interface ProjectCardProps {
   project: Project;
@@ -72,9 +73,7 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
             {typeof project.title === 'object' ? 'Project' : project.title}
           </h3>
           <span className="text-xs text-neutral-400 font-medium ml-2 shrink-0">
-            {project.year && typeof project.year === 'object' && (project.year as any).seconds 
-              ? new Date((project.year as any).seconds * 1000).getFullYear()
-              : String(project.year || '')}
+            {formatYear(project.year)}
           </span>
         </div>
 
