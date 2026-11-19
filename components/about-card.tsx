@@ -147,9 +147,9 @@ export const AboutCard = ({ profile, className }: AboutCardProps) => {
                                 Hello!
                             </h2>
 
-                            <h2 className={`text-2xl md:text-3xl text-black drop-shadow-md mt-1 ${caveat.className}`}>
+                            <h1 className={`text-2xl md:text-3xl text-black drop-shadow-md mt-1 ${caveat.className}`}>
                                 I&apos;m <span className="font-bold">{profile?.name}</span>
-                            </h2>
+                            </h1>
 
                         </div>
                     </div>
