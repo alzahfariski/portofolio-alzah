@@ -3,6 +3,7 @@ import { Zalando_Sans_Expanded } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import MotionProvider from "@/components/motion-provider";
 
 const zalandoSansExpanded = Zalando_Sans_Expanded({
   subsets: ["latin"],
@@ -65,11 +66,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c") }}
         />
-        <Navbar />
-        <main className="flex-grow pt-20 min-[1371px]:pt-0 bg-white">
-          {children}
-        </main>
-        <Footer />
+        <MotionProvider>
+          <Navbar />
+          <main className="flex-grow pt-20 min-[1371px]:pt-0 bg-white">
+            {children}
+          </main>
+          <Footer />
+        </MotionProvider>
       </body>
 
     </html>

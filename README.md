@@ -1,8 +1,8 @@
 # Alzah Fariski - Modern Portfolio
 
-A premium, interactive portfolio built with Next.js 15, featuring a dynamic Bento Grid layout and smooth micro-animations. This project showcases my journey, skills, and professional experience as a Software Developer.
+A premium, interactive portfolio built with Next.js 16.4, featuring a dynamic Bento Grid layout and smooth micro-animations. This project showcases my journey, skills, and professional experience as a Software Developer.
 
-![Portfolio Preview](/public/img/preview.png)
+![Portfolio Preview](public/img/preview.png)
 
 ## 🚀 Features
 
@@ -10,21 +10,22 @@ A premium, interactive portfolio built with Next.js 15, featuring a dynamic Bent
 - **Interactive Components**: Engaging experience, education, and skill cards with fluid animations powered by Framer Motion.
 - **Firebase Integration**: Robust backend integration for profile data and real-time updates.
 - **Modern Tech Stack**: Built with the latest versions of Next.js, React, and Tailwind CSS.
+- **Aksesibilitas gerak**: animasi mengikuti `prefers-reduced-motion` (lewat `MotionConfig` di `components/motion-provider.tsx`).
 - **Premium Aesthetics**: Curated color palettes, glassmorphism effects, and custom typography for a high-end feel.
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: [Next.js 15](https://nextjs.org/), [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
+- **Frontend**: [Next.js 16.4](https://nextjs.org/), [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Backend/Database**: [Firebase](https://firebase.google.com/)
-- **Fonts**: [Geist](https://vercel.com/font), [Caveat](https://fonts.google.com/specimen/Caveat)
+- **Fonts**: [Zalando Sans Expanded](https://fonts.google.com/specimen/Zalando+Sans+Expanded) (teks utama), [Caveat](https://fonts.google.com/specimen/Caveat)
 
 ## 🏁 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 20.9+ (syarat Next.js 16)
 - npm / pnpm / yarn
 
 ### Installation
