@@ -16,7 +16,12 @@ export const skipOptimize = (url?: string): boolean => {
 };
 
 // URL Firestore -> aset lokal (public/images/logos). Lisensi: domain publik (Wikimedia Commons).
-const LOCAL_LOGOS: Record<string, string> = {};
+const LOCAL_LOGOS: Record<string, string> = {
+  "https://upload.wikimedia.org/wikipedia/commons/f/fb/Lambang_Polda_Bengkulu.png":
+    "/images/logos/lambang-polda-bengkulu.webp",
+  "https://upload.wikimedia.org/wikipedia/commons/6/65/Logo_Kementerian_Komunikasi_dan_Digital_Republik_Indonesia_%282024%29.svg":
+    "/images/logos/logo-komdigi.svg",
+};
 
 export const localLogo = (url: string): string => LOCAL_LOGOS[url] ?? url;
 
