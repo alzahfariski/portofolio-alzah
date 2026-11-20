@@ -48,7 +48,7 @@ export const ProjectPageClient = ({
       <div className="lg:hidden fixed top-0 left-0 right-0 h-[72px] bg-white z-40" />
 
       {/* Mobile/Tablet Filter Section (Hidden on Desktop viewport >= lg) */}
-      <section className="lg:hidden mt-20 sticky top-[72px] z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 py-3 px-4">
+      <section className="lg:hidden sticky top-16 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 py-3 px-4">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center gap-4">
           
           {/* Left Dropdown (Sort) */}
@@ -103,7 +103,7 @@ export const ProjectPageClient = ({
       </section>
 
       {/* Main Content with Desktop Sidebar and Grid */}
-      <section className="px-4 pt-32 pb-8 lg:pt-40 lg:pb-10 min-[1371px]:pt-48 min-[1371px]:pb-14 w-full">
+      <section className="px-4 pt-12 pb-8 lg:pt-16 lg:pb-10 min-[1371px]:pt-20 min-[1371px]:pb-14 w-full">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 min-[1371px]:gap-12 items-start">
           
           {/* Desktop Sidebar (Hidden on Mobile/Tablet) */}

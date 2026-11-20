@@ -1,12 +1,30 @@
 import type { Metadata } from "next";
-import { Zalando_Sans_Expanded } from "next/font/google";
+import { Inter_Tight, JetBrains_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import MotionProvider from "@/components/motion-provider";
 
-const zalandoSansExpanded = Zalando_Sans_Expanded({
+// Inter Tight variabel: satu berkas (bobot 100-900, dipakai 400-850).
+const interTight = Inter_Tight({
   subsets: ["latin"],
+  weight: "variable",
+  variable: "--font-inter-tight",
+  display: "swap",
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+// Caveat hanya untuk satu frasa tulisan tangan; tidak di-preload.
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: "600",
+  variable: "--font-caveat",
+  display: "swap",
+  preload: false,
 });
 
 const SITE_URL = "https://alzahfariski.vercel.app";
@@ -58,23 +76,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // lang="en": kerangka antarmuka (judul kartu, tombol, footer, deskripsi meta) berbahasa Inggris;
-    // bullet pengalaman campur Indonesia/Inggris (isi tidak diubah).
-    <html lang="en">
-      <body className={`${zalandoSansExpanded.className} antialiased overflow-x-hidden flex flex-col min-h-screen`}>
+    // Kerangka antarmuka berbahasa Indonesia; isi dari Firestore tampil apa adanya.
+    <html lang="id">
+      <body
+        className={`${interTight.variable} ${jetbrainsMono.variable} ${caveat.variable} grid-bg antialiased overflow-x-hidden flex flex-col min-h-screen`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c") }}
         />
         <MotionProvider>
-          <Navbar />
-          <main className="flex-grow pt-20 min-[1371px]:pt-0 bg-white">
+          <Header />
+          <main id="utama" className="flex-grow">
             {children}
           </main>
           <Footer />
         </MotionProvider>
       </body>
-
     </html>
   );
 }
