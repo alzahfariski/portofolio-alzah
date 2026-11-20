@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { SITE } from "@/config/site";
 
-// Tombol melayang ponsel: muncul setelah layar pertama lewat, hilang saat bagian kontak terlihat.
+// Tombol melayang ponsel: muncul setelah tombol utama layar pertama keluar dari layar, hilang saat bagian kontak terlihat.
 export default function FloatingCta() {
   const [on, setOn] = useState(false);
   useEffect(() => {
-    const hero = document.getElementById("atas");
+    const hero = document.querySelector("#atas .btns"); // tombol utama layar pertama
     const kontak = document.getElementById("kontak");
     if (!hero) return;
     let heroOut = false;
