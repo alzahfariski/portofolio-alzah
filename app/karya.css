@@ -60,11 +60,11 @@ a.round:hover{background:rgba(255,255,255,.14)}
 .co .mono-m{display:block;color:#3B362B;margin-bottom:2px}
 .co.l{right:calc(100% + var(--L));top:26%;transform-origin:100% 50%;transform:translateY(-50%) rotate(calc(var(--t) * -1))}
 .co.r{left:calc(100% + var(--L));top:72%;transform-origin:0 50%;transform:translateY(-50%) rotate(calc(var(--t) * -1))}
-.ln{position:absolute;z-index:3;height:0;width:var(--L);border-top:2px dashed #fff}
+.ln{position:absolute;z-index:3;height:0;width:var(--L);border-top:3px dashed #fff}
 .ln.l{right:100%;top:26%}.ln.r{left:100%;top:72%}
 .ln:after{content:"";position:absolute;top:-6px;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--c)}
 .ln.l:after{right:-5px}.ln.r:after{left:-5px}
-.sticker{position:absolute;z-index:5;right:-6px;top:-18px;background:var(--sorot);color:#16140F;font-family:var(--font-jetbrains-mono),"DejaVu Sans Mono",monospace;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transform:rotate(7deg);box-shadow:3px 5px 0 rgba(22,20,15,.25);border:2px solid #16140F;white-space:nowrap}
+.sticker{position:absolute;z-index:5;right:-10px;top:-36px;background:var(--sorot);color:#16140F;font-family:var(--font-jetbrains-mono),"DejaVu Sans Mono",monospace;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transform:rotate(-6deg);box-shadow:3px 5px 0 rgba(22,20,15,.25);border:2px solid #16140F;white-space:nowrap}
 .mock.phone{width:224px;border:7px solid #16140F;border-radius:34px;padding:16px 14px 18px;min-height:400px}
 .ph-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:16px;margin-bottom:10px}
 .chip{background:var(--sorot);border-radius:999px;padding:1px 10px;font-weight:700;font-size:14px}
@@ -128,10 +128,10 @@ a.round:hover{background:rgba(255,255,255,.14)}
 .round{margin-top:24px}
 /* callout atas dan bawah mockup, garis vertikal ke bingkai */
 .stage{min-height:0;padding:150px 0}
-.co{width:min(300px,78vw)}
+.co{width:min(300px,calc(100vw - 96px))}
 .co.l{right:auto;left:50%;top:auto;bottom:calc(100% + var(--L));transform-origin:50% 100%;transform:translateX(-50%) rotate(calc(var(--t) * -1))}
 .co.r{left:50%;top:calc(100% + var(--L));transform-origin:50% 0;transform:translateX(-50%) rotate(calc(var(--t) * -1))}
-.ln{width:0;height:var(--L);border-top:0;border-left:2px dashed #fff}
+.ln{width:0;height:var(--L);border-top:0;border-left:3px dashed #fff}
 .ln.l{right:auto;left:50%;top:auto;bottom:100%}.ln.r{left:50%;top:100%}
 .ln.l:after{right:auto;left:-6px;top:auto;bottom:-5px}.ln.r:after{left:-6px;top:-5px}
 .cta{grid-template-columns:1fr;padding:36px 28px}}
@@ -141,5 +141,9 @@ a.round:hover{background:rgba(255,255,255,.14)}
 .tabrow{padding-left:18px}.pbody{padding:24px 20px;border-radius:24px}.txt h3{font-size:42px}
 .stage{padding:170px 0 164px}
 .mock.phone{width:236px}.mock.win{width:min(290px,84vw)}
-.sticker{right:-4px;top:-20px}
+.sticker{right:auto;left:-6px;top:-36px}
 .cta{padding:28px 20px}.cta h2{font-size:44px}.mailbig{font-size:21px}.big{font-size:38px}}
+@media(max-width:600px){.fan{--W:112px;--sp:38px;--s:1;height:232px;margin-top:2px}.mini{top:8px;border-radius:16px}.mini button{padding:9px 6px 9px 10px;border-radius:16px}.mini b{font-size:22px}.mini strong{font-size:14px;margin-top:4px;letter-spacing:-.04em;white-space:nowrap}.mini small{font-size:13px;letter-spacing:0}.art{margin-top:6px;border-radius:8px}}
+@media(prefers-reduced-motion:reduce){.mini{animation:none}}
+/* ponsel/tablet: kipas dinaikkan di atas kontak agar tampil penuh di layar pertama */
+@media(max-width:1000px){.hero{grid-template-areas:none;display:flex;flex-direction:column;gap:14px}.idb{display:contents}.hero .ct{order:5}.hero .fanb{order:4;width:100%}.hero .xp{order:6;margin-top:10px}}
