@@ -11,11 +11,11 @@ export const sampleExperiences = [
     imageUrl: "",
     location: "Bengkulu",
     type: "Office",
-    periodStart: ts("2025-01-01T00:00:00+07:00"),
+    periodStart: ts("2025-01-01T12:00:00Z"),
     periodEnd: null,
     work: [
-      { role: "Mobile Developer", description: "", imageUrl: [], periodStart: ts("2025-01-01T00:00:00+07:00"), periodEnd: ts("2025-12-01T00:00:00+07:00") },
-      { role: "Fullstack Mobile Developer", description: "", imageUrl: [], periodStart: ts("2026-01-01T00:00:00+07:00"), periodEnd: null },
+      { role: "Mobile Developer", description: "", imageUrl: [], periodStart: ts("2025-01-01T12:00:00Z"), periodEnd: ts("2025-12-01T12:00:00Z") },
+      { role: "Fullstack Mobile Developer", description: "", imageUrl: [], periodStart: ts("2026-01-01T12:00:00Z"), periodEnd: null },
     ],
   },
   {
@@ -23,10 +23,10 @@ export const sampleExperiences = [
     imageUrl: "",
     location: "Bengkulu",
     type: "Hybrid",
-    periodStart: ts("2024-11-01T00:00:00+07:00"),
+    periodStart: ts("2024-11-01T12:00:00Z"),
     periodEnd: null,
     work: [
-      { role: "Founder", description: "", imageUrl: [], periodStart: ts("2024-11-01T00:00:00+07:00"), periodEnd: null },
+      { role: "Founder", description: "", imageUrl: [], periodStart: ts("2024-11-01T12:00:00Z"), periodEnd: null },
     ],
   },
   {
@@ -34,10 +34,10 @@ export const sampleExperiences = [
     imageUrl: "",
     location: "Bengkulu",
     type: "Office",
-    periodStart: ts("2023-03-01T00:00:00+07:00"),
-    periodEnd: ts("2024-02-01T00:00:00+07:00"),
+    periodStart: ts("2023-03-01T12:00:00Z"),
+    periodEnd: ts("2024-02-01T12:00:00Z"),
     work: [
-      { role: "Fullstack Programmer", description: "", imageUrl: [], periodStart: ts("2023-03-01T00:00:00+07:00"), periodEnd: ts("2024-02-01T00:00:00+07:00") },
+      { role: "Fullstack Programmer", description: "", imageUrl: [], periodStart: ts("2023-03-01T12:00:00Z"), periodEnd: ts("2024-02-01T12:00:00Z") },
     ],
   },
 ] as unknown as CompanyExperience[];

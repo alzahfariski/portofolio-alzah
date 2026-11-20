@@ -25,7 +25,7 @@
 .ct a:hover{background:var(--sorot)}
 /* kipas (placeholder statis; tahap 2 menambah interaksi) */
 .fanb{grid-area:fan;position:relative;padding-top:2px}
-.hand{font-family:var(--font-hand);font-weight:600;font-size:30px;line-height:1;transform:rotate(-3deg);display:inline-block}
+.hand{font-family:var(--font-caveat), "Comic Neue", cursive;font-weight:600;font-size:30px;line-height:1;transform:rotate(-3deg);display:inline-block}
 .fan{position:relative;--W:172px;height:322px;width:100%;margin-top:6px}
 .mini{box-sizing:border-box;position:absolute;left:50%;top:14px;width:var(--W);aspect-ratio:3/4;translate:-50% 0;transform-origin:50% 250%;rotate:calc(var(--r)*var(--s,1));
 transition:rotate .5s cubic-bezier(.3,1.3,.5,1),translate .45s cubic-bezier(.3,1.3,.5,1),box-shadow .3s;background:var(--c);color:var(--f);border-radius:20px;padding:12px 12px 12px 14px;display:flex;flex-direction:column;box-shadow:0 18px 30px -18px rgba(0,0,0,.55);overflow:hidden;text-decoration:none;
@@ -35,9 +35,9 @@ animation:open .76s cubic-bezier(.2,.75,.2,1) backwards;animation-delay:calc(var
 .fan:hover .mini{rotate:calc(var(--r)*var(--s,1)*1.35)}
 .mini:hover,.mini:focus-visible{translate:-50% -26px;box-shadow:0 30px 40px -20px rgba(0,0,0,.55);z-index:9}
 .mini:focus-visible{outline:3px solid var(--aksi);outline-offset:4px;overflow:visible}
-.mini b{font-family:var(--font-mono);font-weight:700;font-size:30px;line-height:.9;letter-spacing:-.06em}
+.mini b{font-family:var(--font-jetbrains-mono), "DejaVu Sans Mono", monospace;font-weight:700;font-size:30px;line-height:.9;letter-spacing:-.06em}
 .mini strong{font-size:19px;line-height:1.05;letter-spacing:-.03em;font-weight:800;margin-top:6px;white-space:nowrap}
-.mini small{font-family:var(--font-mono);font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-top:4px;white-space:nowrap}
+.mini small{font-family:var(--font-jetbrains-mono), "DejaVu Sans Mono", monospace;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-top:4px;white-space:nowrap}
 .art{flex:1;margin-top:10px;border-radius:12px;position:relative;overflow:hidden;min-height:0}
 .art svg{position:absolute;inset:0;width:100%;height:100%}
 .hint{display:flex;align-items:center;gap:12px;margin-top:2px}

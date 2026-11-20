@@ -51,7 +51,7 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-inter-tight), "Noto Sans", "Liberation Sans", Arial, sans-serif;
   font-size: 17px;
   line-height: 1.55;
 }
@@ -72,7 +72,7 @@ body {
 
 /* Label mono: 14 px, warna kontras >= 4,5:1 */
 .mono-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-jetbrains-mono), "DejaVu Sans Mono", monospace;
   font-size: 14px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
