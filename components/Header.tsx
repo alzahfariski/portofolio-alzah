@@ -12,7 +12,7 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between px-5 sm:px-8">
         <Link
           href="/"
-          aria-label={`${SITE.name}, ke beranda`}
+          aria-label={`AF, ${SITE.name}: ke beranda`}
           className="grid h-11 w-11 place-items-center rounded-xl bg-tinta text-[17px] font-extrabold text-white no-underline"
         >
           AF
