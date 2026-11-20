@@ -9,7 +9,7 @@ const items = [
 
 export default function ContactGrid() {
   return (
-    <ul className="ct" id="kontak">
+    <ul className="ct">
       {items.map((i) => (
         <li key={i.label}>
           <span className="mono-label">{i.label}</span>

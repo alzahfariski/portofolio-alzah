@@ -1,4 +1,7 @@
 import "./beranda.css";
+import "./karya.css";
+import KaryaSection from "@/components/KaryaSection";
+import Closing from "@/components/Closing";
 import Hero from "@/components/Hero";
 import FloatingCta from "@/components/FloatingCta";
 import { getExperiences, getEducation } from "@/lib/firestore";
@@ -21,6 +24,8 @@ export default async function Home() {
   return (
     <>
       <Hero experiences={experiences} educations={educations} />
+      <KaryaSection />
+      <Closing />
       <FloatingCta />
     </>
   );

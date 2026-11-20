@@ -1,35 +1,54 @@
-import Link from "next/link";
-import { FAN_ITEMS } from "@/data/featured";
+"use client";
 
-// Placeholder statis tahap 1: kartu menuju /project. Interaksi lompat-ke-kartu dibuat di tahap 2 (redesain/proyek).
+import { FEATURED } from "@/data/featured";
+
+// Kipas 4 kartu: tombol sungguhan. Ketuk = gulir halus ke kartu proyek berwarna sama
+// (lompat langsung bila pengguna memilih reduced-motion). Fokus dipindah ke kartu tujuan.
 export default function ProjectFan() {
+  const go = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ behavior: rm ? "auto" : "smooth", block: "start" });
+    el.focus({ preventScroll: true });
+  };
   return (
     <div className="fanb">
       <span className="hand">lihat karyaku!</span>
-      <div className="fan" role="group" aria-label="Pilihan proyek">
-        {FAN_ITEMS.map((p, i) => (
-          <Link
+      <ul className="fan" aria-label="Pilihan proyek">
+        {FEATURED.map((p, i) => (
+          <li
             key={p.no}
-            href="/project"
             className="mini"
             style={
-              { "--i": i, "--r": `${p.rot}deg`, "--c": p.color, "--f": p.fg } as React.CSSProperties
+              {
+                "--i": i,
+                "--r": p.rot,
+                "--c": p.color,
+                "--f": p.fg,
+              } as React.CSSProperties
             }
           >
-            <b>{p.no}</b>
-            <strong>{p.title}</strong>
-            <small>{p.kind}</small>
-            <span className="art" style={{ background: p.artBg }}>
-              <svg
-                viewBox="0 0 120 120"
-                preserveAspectRatio="xMinYMid slice"
-                aria-hidden="true"
-                dangerouslySetInnerHTML={{ __html: p.svg }}
-              />
-            </span>
-          </Link>
+            <button
+              type="button"
+              onClick={() => go(p.id)}
+              aria-label={`${p.no} ${p.fanTitle} ${p.fanKind}: lompat ke kartu proyek`}
+            >
+              <b>{p.no}</b>
+              <strong>{p.fanTitle}</strong>
+              <small>{p.fanKind}</small>
+              <span className="art" style={{ background: p.artBg }}>
+                <svg
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="xMinYMid slice"
+                  aria-hidden="true"
+                  dangerouslySetInnerHTML={{ __html: p.fanSvg }}
+                />
+              </span>
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
       <p className="hint mono-label">
         <i />
         Pilih kartu<span className="hx">&nbsp;atau gulir</span>

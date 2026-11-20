@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SITE } from "@/config/site";
 
 const links = [
-  { name: "Karya", href: "/project" },
+  { name: "Karya", href: "/#karya" },
   { name: "Kontak", href: "/#kontak" },
 ];
 
