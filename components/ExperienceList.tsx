@@ -54,7 +54,7 @@ export default function ExperienceList({
       {(educations ?? []).map((e) => (
         <p className="edu" key={e.institution + e.degree}>
           <span className="mono-label">Pendidikan</span>
-          {e.degree}, {INSTITUSI[e.institution] ?? e.institution} · {e.period}
+          {e.degree}, {INSTITUSI[e.institution] ?? e.institution} · <span style={{ whiteSpace: "nowrap" }}>{e.period}</span>
         </p>
       ))}
     </div>

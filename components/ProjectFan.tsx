@@ -12,7 +12,6 @@ export default function ProjectFan() {
             key={p.no}
             href="/project"
             className="mini"
-            aria-label={p.label}
             style={
               { "--i": i, "--r": `${p.rot}deg`, "--c": p.color, "--f": p.fg } as React.CSSProperties
             }
