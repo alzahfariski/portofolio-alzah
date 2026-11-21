@@ -147,8 +147,10 @@ footer { margin-top: var(--sec); padding-top: 0 !important; }
 /* ---- kipas: masuk grid ---- */
 .fan { --ox: 34px; }
 @media (max-width: 600px) {
-  .fan { --W: 96px; --ox: 18px; --sp: calc((100vw - 2 * var(--gutter) - var(--W) - var(--ox) * 2) / 3); }
-  .mini small { max-width: 64px; }
+  .fan { --W: 88px; --ox: 14px; --sp: calc((100vw - 2 * var(--gutter) - var(--W) - var(--ox) * 2) / 3); }
+  .mini small { max-width: 56px; }
+  .mini strong { font-size: 13px; letter-spacing: -.05em; }
+  .mini button { padding-left: var(--s2); padding-right: var(--s1); }
 }
 /* kolom kanan hero mengisi tinggi kolom kiri: jarak antar-baris dibagi rata */
 @media (min-width: 1001px) {
