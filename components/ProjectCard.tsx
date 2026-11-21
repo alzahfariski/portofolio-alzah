@@ -28,9 +28,7 @@ export default function ProjectCard({ p }: { p: Featured; index: number }) {
         </div>
       </div>
       <div className="pbody">
-        <div className="wm" aria-hidden="true" style={{ fontSize: p.wm }}>
-          {p.watermark}
-        </div>
+        <div className="wm" aria-hidden="true" data-t={p.watermark} style={{ fontSize: p.wm }} />
         <div className="txt">
           <p className="mono-m">{p.meta}</p>
           <h3>{p.title}</h3>
