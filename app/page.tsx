@@ -1,5 +1,6 @@
 import "./beranda.css";
 import "./karya.css";
+import "./spasi.css";
 import KaryaSection from "@/components/KaryaSection";
 import ProjectFan from "@/components/ProjectFan";
 import Siklus from "@/components/Siklus";

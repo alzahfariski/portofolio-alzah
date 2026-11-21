@@ -40,7 +40,11 @@ export default function Siklus() {
             <i>{l.no}</i>
             <b>{l.judul}</b>
             <span>{l.teks}</span>
-            <small className="mono-label">{l.dasar}</small>
+            <small className="mono-label">
+              {l.dasar.split(" · ").map((t) => (
+                <span key={t}>{t}</span>
+              ))}
+            </small>
           </li>
         ))}
       </ol>
