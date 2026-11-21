@@ -79,6 +79,7 @@ export default function TryElator() {
           <span key={b.name}>
             <Badge c={b.c} on={p >= b.at} name={b.name} />
             <small>{b.name}</small>
+            <small className="req">{p >= b.at ? "terbuka" : `${b.at} poin (contoh)`}</small>
           </span>
         ))}
       </div>
