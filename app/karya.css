@@ -152,3 +152,4 @@ button.dtl i:after{content:"";position:absolute;left:5px;top:2px;width:2px;heigh
 .bdg small.req{font-size:13px;color:#4A4437;line-height:1.1;text-align:center;font-weight:600}
 .bdg span{max-width:33%}
 @media(max-width:600px){.stage{padding-bottom:210px}.more{padding-bottom:70px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

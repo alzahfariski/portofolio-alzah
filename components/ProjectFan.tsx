@@ -33,11 +33,9 @@ export default function ProjectFan() {
             <button
               type="button"
               onClick={() => go(p.id)}
-              aria-label={`${p.no} ${p.fanTitle} ${p.fanKind}: lompat ke kartu proyek`}
             >
-              <b>{p.no}</b>
-              <strong>{p.fanTitle}</strong>
-              <small>{p.fanKind}</small>
+              <b>{p.no}</b> <strong>{p.fanTitle}</strong> <small>{p.fanKind}</small>
+              <span className="sr">: lompat ke kartu proyek</span>
               <span className="art" style={{ background: p.artBg }}>
                 <svg
                   viewBox="0 0 100 100"

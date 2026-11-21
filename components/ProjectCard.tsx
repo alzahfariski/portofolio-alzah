@@ -12,7 +12,7 @@ const TRY = {
 
 export default function ProjectCard({ p }: { p: Featured; index: number }) {
   const Try = TRY[p.kind];
-  const label = p.detailUrl ? `Buka detail proyek ${p.title}` : `Detail proyek ${p.title}: belum tersedia`;
+  const label = p.detailUrl ? `Lihat detail, ${p.title}` : `Detail segera, ${p.title}: belum tersedia`;
   return (
     <article
       className="pc"
