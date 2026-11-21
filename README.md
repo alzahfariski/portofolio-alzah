@@ -71,3 +71,10 @@ Feel free to reach out via the contact card in the portfolio or connect with me 
 ---
 
 Developed with ❤️ by [Alzah Fariski](https://github.com/alzahfariski)
+
+## Fixture data asli (SAMPLE_DATA=1)
+
+- `fixtures/sample-data.ts` (pengalaman, pendidikan) dan `data/projects-live.json` (25 proyek) disalin dari data PUBLIK situs live https://alzahfariski.vercel.app/ pada 21 Nov 2026 (hanya baca, tanpa koneksi atau penulisan Firebase). Tanggal apa adanya dari Firestore (tidak diperbaiki).
+- Cara memperbarui: ambil HTML beranda dan /project, ambil payload RSC (`self.__next_f.push`), salin ulang `experiences`, `educations`, dan daftar proyek (id, title, category, client, description, tags, year, URL gambar tanpa query) ke berkas di atas. Kunci/env Firebase tidak diperlukan.
+- Tes: `SAMPLE_DATA=1 npm run build && SAMPLE_DATA=1 npm start`.
+- Gambar asli proyek (`lh3.googleusercontent.com`) lewat `next/image`; hanya Habitly dan LaundryKu dipakai (`IMG_OK` di `data/featured.ts`). Cadangan: mockup SVG.
