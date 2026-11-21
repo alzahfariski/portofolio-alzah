@@ -1,6 +1,7 @@
 import type { CompanyExperience, Education } from "@/lib/types";
 
 const BULAN = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+const BULAN_EN: Record<string, string> = { May: "Mei", Aug: "Agu", Oct: "Okt", Dec: "Des" };
 
 type Ts = { seconds: number } | null | undefined;
 
@@ -13,8 +14,24 @@ function fmt(t: Ts): string {
 }
 const sec = (t: Ts) => (t && typeof t.seconds === "number" ? t.seconds : Infinity);
 
-// Tampilan saja: nama institusi Inggris di Firestore ditampilkan berbahasa Indonesia. Data Firestore tidak diubah.
+// Tampilan saja: teks periode pendidikan ("Aug 2020 - Aug 2024") -> bulan Indonesia dan satu tanda pisah (em dash);
+// "Present"/"Now" -> "sekarang". Kosong tetap kosong. Data Firestore tidak diubah.
+function periode(p: string): string {
+  const s = (p ?? "").trim();
+  if (!s) return "";
+  return s
+    .split(/\s+[-–—]\s+/)
+    .map((x) =>
+      x.replace(/\b[A-Za-z]{3,}\b/g, (w) =>
+        /^(present|now)$/i.test(w) ? "sekarang" : (BULAN_EN[w.slice(0, 3)] ?? w.slice(0, 3)),
+      ),
+    )
+    .join(" — ");
+}
+
+// Tampilan saja: institusi berbahasa Indonesia dan "iOS" berhuruf benar. Data Firestore tidak diubah.
 const INSTITUSI: Record<string, string> = { "Bengkulu University": "Universitas Bengkulu" };
+const rapi = (s: string) => s.replace(/\bIos\b/g, "iOS");
 
 export default function ExperienceList({
   experiences,
@@ -27,6 +44,7 @@ export default function ExperienceList({
   const list = [...(experiences ?? [])].sort(
     (a, b) => sec(b.periodStart as unknown as Ts) - sec(a.periodStart as unknown as Ts),
   );
+  const edu = educations ?? [];
   return (
     <div className="xp">
       <h2 className="xh mono-label">Pengalaman · terbaru dulu</h2>
@@ -51,12 +69,24 @@ export default function ExperienceList({
           ))}
         </ol>
       )}
-      {(educations ?? []).map((e) => (
-        <p className="edu" key={e.institution + e.degree}>
-          <span className="mono-label">Pendidikan</span>
-          {e.degree}, {INSTITUSI[e.institution] ?? e.institution} · <span style={{ whiteSpace: "nowrap" }}>{e.period}</span>
-        </p>
-      ))}
+      {edu.length > 0 && (
+        <>
+          <h2 className="xh mono-label edh">Pendidikan</h2>
+          <ul className="edl">
+            {edu.map((e) => {
+              const p = periode(e.period);
+              return (
+                <li key={e.institution + e.degree}>
+                  <span>
+                    {rapi(e.degree)}, {INSTITUSI[e.institution] ?? e.institution}
+                  </span>
+                  {p && <span className="mono-label">{p}</span>}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
     </div>
   );
 }
