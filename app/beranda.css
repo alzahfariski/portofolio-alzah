@@ -74,3 +74,5 @@
 .sk small{margin-top:4px;letter-spacing:.04em}
 @media(max-width:1000px){.sk{grid-template-columns:repeat(2,minmax(0,1fr))}.sk li:nth-child(odd){padding-left:0;border-left:0}.sk li:nth-child(n+3){border-top:1px solid var(--garis)}}
 @media(max-width:600px){.sk{grid-template-columns:1fr}.sk li,.sk li+li{padding:12px 0;border-left:0}.sk li+li{border-top:1px solid var(--garis)}.sk b{font-size:21px}}
+/* keseimbangan kolom kanan (pengalaman+pendidikan) terhadap kolom identitas */
+@media(min-width:1001px){.xp{margin-top:0;align-self:start}.xp li{padding:14px 0}.xp li b{font-size:20px}.rl span:first-child{font-size:17px}.edl li{font-size:17px;padding:8px 0}.edh{margin-top:26px}.xh{margin-bottom:8px}}
