@@ -6,8 +6,8 @@ export const SITE = {
   nameFirst: "Alzah",
   nameLast: "Fariski",
   status: "Tersedia untuk proyek dan peran penuh waktu",
-  role: "Software Developer / UI/UX",
-  lead: "Saya membangun aplikasi mobile dan web yang rapi dan mudah dipakai, dari desain sampai rilis.",
+  role: "End-to-End Software Developer",
+  lead: "Saya merancang, membangun, merilis, dan merawat aplikasi mobile dan web, dari perancangan sampai deployment dan pemeliharaan, dalam satu tangan.",
   email: "alzahfariski@gmail.com",
   // Nomor WA dari founder (keputusan 20 Nov 2026): tampilan tertulis + tautan wa.me (format internasional).
   whatsappLabel: "0822-4328-3356",
