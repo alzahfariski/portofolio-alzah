@@ -5,6 +5,7 @@ export default function KaryaSection() {
   return (
     <section className="wrap karya" id="karya" aria-labelledby="karya-judul">
       <div className="intro">
+        <span className="hand">lihat karyaku!</span>
         <h2 id="karya-judul">
           Karya pilihan<sup aria-hidden="true">(04)</sup>
         </h2>
@@ -13,6 +14,10 @@ export default function KaryaSection() {
           contoh interaktif dengan data contoh, bukan data pengguna.
         </p>
       </div>
+      <p className="hint mono-label">
+        <i aria-hidden="true" />
+        Pilih kartu atau gulir
+      </p>
       <ul className="idx" aria-label="Indeks proyek">
         {FEATURED.map((p) => (
           <li key={p.id}>

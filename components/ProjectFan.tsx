@@ -1,7 +1,6 @@
 "use client";
 
 import { FEATURED } from "@/data/featured";
-import RealImg from "@/components/RealImg";
 
 // Kipas 4 kartu: tombol sungguhan. Ketuk = gulir halus ke kartu proyek berwarna sama
 // (lompat langsung bila pengguna memilih reduced-motion). Fokus dipindah ke kartu tujuan.
@@ -39,11 +38,10 @@ export default function ProjectFan() {
               <span className="art" style={{ background: p.artBg }}>
                 <svg
                   viewBox="0 0 100 100"
-                  preserveAspectRatio="xMinYMid slice"
+                  preserveAspectRatio="xMidYMid meet"
                   aria-hidden="true"
                   dangerouslySetInnerHTML={{ __html: p.fanSvg }}
                 />
-                {p.img && <RealImg src={p.img} sizes="180px" pos="50% 62%" />}
               </span>
             </button>
           </li>

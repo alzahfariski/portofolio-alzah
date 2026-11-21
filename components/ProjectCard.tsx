@@ -47,7 +47,7 @@ export default function ProjectCard({ p }: { p: Featured; index: number }) {
           )}
           {p.img && (
             <div className="shot">
-              <RealImg src={p.img} sizes="(max-width: 1000px) 90vw, 280px" />
+              <RealImg src={p.img} sizes="(max-width: 1000px) 90vw, 380px" pos="50% 56%" />
             </div>
           )}
           {p.detailUrl ? (
