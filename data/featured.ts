@@ -1,7 +1,9 @@
 // Data 4 karya pilihan.
-// Teks kartu (judul, kategori, deskripsi, tag) diringkas dari deskripsi proyek di situs live (alzahfariski.vercel.app/project).
-// Semua isi mockup dan interaksi COBA adalah DATA CONTOH rekaan (bukan data pengguna, pasien, atau instansi)
-// dan bukan tangkapan layar aplikasi asli. Tanpa logo instansi. Jangan menaruh sandi/token di berkas ini.
+// Judul, kategori, tanggal (Timestamp, UTC), deskripsi (kalimat pertama apa adanya), tag, dan klien diambil dari
+// data ASLI Firestore yang dibaca dari situs live (salinan: data/projects-live.json, 21 Nov 2026; cara memperbarui: README).
+// Nama klien tampil atas keputusan founder 21 Nov 2026 (tanpa logo instansi). Isi mockup SVG dan interaksi COBA
+// tetap DATA CONTOH rekaan (bukan data pengguna/pasien/instansi). Jangan menaruh sandi/token di berkas ini.
+import live from "./projects-live.json";
 
 export type Kind = "habit" | "laundry" | "elator" | "selim";
 
@@ -13,7 +15,9 @@ export interface Featured {
   tab: string; // teks tab
   fanTitle: string; // judul pendek di kipas
   fanKind: string; // kategori singkat di kipas
-  meta: string; // metadata mono (ditampilkan kapital lewat CSS)
+  meta: string; // metadata mono: bulan/tahun (UTC) dan kategori
+  client?: string; // nama klien dari data; kosong bila data tidak punya klien
+  img?: string; // URL gambar asli proyek (hanya yang lolos pemeriksaan)
   desc: string;
   pills: string[];
   color: string;
@@ -42,42 +46,51 @@ const selimSvg =
   '<rect x="4" y="8" width="66" height="86" rx="10" fill="#fff"/><path d="M12 56 A24 24 0 0 1 24 29" fill="none" stroke="#2FA866" stroke-width="7"/><path d="M24 29 A24 24 0 0 1 50 29" fill="none" stroke="#F2A93B" stroke-width="7"/><path d="M50 29 A24 24 0 0 1 62 56" fill="none" stroke="#D93A3A" stroke-width="7"/>' +
   '<line x1="37" y1="56" x2="46" y2="36" stroke="#16140F" stroke-width="3" stroke-linecap="round"/><circle cx="37" cy="56" r="4.5" fill="#16140F"/><rect x="11" y="70" width="14" height="14" rx="7" fill="#EDE5FB" stroke="#6D32D9" stroke-width="1.5"/><rect x="30" y="70" width="14" height="14" rx="7" fill="#6D32D9"/><rect x="49" y="70" width="14" height="14" rx="7" fill="#EDE5FB" stroke="#6D32D9" stroke-width="1.5"/>';
 
+type Live = { id: string; title: string; category: string; client: string | null; description: string; tags: string[]; year: { seconds: number } | null; imageUrl: string };
+const BULAN = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+const L = (id: string): Live => {
+  const x = (live as Live[]).find((p) => p.id === id);
+  if (!x) throw new Error(`data proyek ${id} tidak ada`);
+  return x;
+};
+// Bulan/tahun dari Timestamp, selalu UTC (server dan browser sama).
+const bulan = (x: Live) => {
+  const d = new Date((x.year?.seconds ?? 0) * 1000);
+  return `${BULAN[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+};
+// Kalimat pertama deskripsi asli, apa adanya.
+const first = (x: Live) => (x.description.match(/^[\s\S]*?[.!?](?=\s|$)/)?.[0] ?? x.description).trim();
+// Gambar asli hanya dipakai bila lolos pemeriksaan (tanpa data pribadi). E-Lator dan Selim Skrin DITAHAN (lihat laporan).
+const IMG_OK = new Set(["habitly", "VazkwOHOyfRXpk5CM5qP"]);
+const fromLive = (id: string) => {
+  const x = L(id);
+  return { title: x.title, meta: `${bulan(x)} · ${x.category}`, fanKind: x.category, desc: first(x), pills: x.tags, client: x.client ?? undefined, img: IMG_OK.has(id) ? x.imageUrl : undefined };
+};
+
 export const FEATURED: Featured[] = [
   {
-    id: "p1", kind: "habit", no: "01", title: "Habitly", tab: "Habitly", fanTitle: "Habitly", fanKind: "Mobile",
-    meta: "2026 · Aplikasi mobile",
-    desc: "Pelacak kebiasaan: daftar kebiasaan, jadwal, dan pantauan perkembangan harian.",
-    pills: ["Habit tracker", "Produktivitas", "Goal tracking"],
+    ...fromLive("habitly"), id: "p1", kind: "habit", no: "01", tab: "Habitly", fanTitle: "Habitly",
     color: "#12845A", fg: "#FFFFFF", artBg: "#0C5C3E", rot: -24, watermark: "HABITLY", wm: 230, sticker: "Habit tracker",
     note: "Satu layar untuk daftar kebiasaan, jadwal, dan perkembangan harian.",
     tryText: "Ketuk sebuah kebiasaan: tanda centang dan donat progres ikut berubah.",
     fanSvg: habitSvg,
   },
   {
-    id: "p2", kind: "laundry", no: "02", title: "LaundryKu POS", tab: "LaundryKu POS", fanTitle: "LaundryKu", fanKind: "Web",
-    meta: "2026 · Web kasir",
-    desc: "Kasir web untuk bisnis laundry: catat order, lacak status cucian, laporan harian.",
-    pills: ["POS", "Laundry", "Manajemen bisnis"],
+    ...fromLive("VazkwOHOyfRXpk5CM5qP"), id: "p2", kind: "laundry", no: "02", tab: "LaundryKu POS", fanTitle: "LaundryKu",
     color: "#2547E8", fg: "#FFFFFF", artBg: "#1A35B8", rot: -8, watermark: "LAUNDRYKU", wm: 175, sticker: "Kasir web",
     note: "Order dicatat sekali, lalu statusnya dilacak sampai cucian siap.",
     tryText: "Ketuk tombol status: Cuci, Setrika, lalu Siap.",
     fanSvg: laundrySvg,
   },
   {
-    id: "p3", kind: "elator", no: "03", title: "E-Lator", tab: "E-Lator", fanTitle: "E-Lator", fanKind: "Mobile",
-    meta: "2026 · Aplikasi agen",
-    desc: "Aplikasi agen edukator: laporan kegiatan, pemantauan kinerja, poin, badge, dan papan peringkat.",
-    pills: ["Gamifikasi", "Reporting system", "Agent monitoring"],
+    ...fromLive("elator"), id: "p3", kind: "elator", no: "03", tab: "E-Lator", fanTitle: "E-Lator",
     color: "#F2A93B", fg: "#16140F", artBg: "#B26A08", rot: 8, watermark: "E-LATOR", wm: 230, sticker: "Poin + badge",
     note: "Laporan kegiatan memberi poin, badge, dan posisi di papan peringkat.",
     tryText: "Ketuk Kirim laporan: poin bertambah, badge contoh muncul pada ambang tertentu.",
     fanSvg: elatorSvg,
   },
   {
-    id: "p4", kind: "selim", no: "04", title: "Selim Skrin", tab: "Selim Skrin", fanTitle: "Selim Skrin", fanKind: "Kesehatan",
-    meta: "2026 · Skrining kesehatan",
-    desc: "Skrining awal hipertensi dan diabetes secara mandiri, dengan saran gaya hidup sehat.",
-    pills: ["Skrining", "Kesehatan", "PTM"],
+    ...fromLive("selim"), id: "p4", kind: "selim", no: "04", tab: "Selim Skrin", fanTitle: "Selim Skrin",
     color: "#6D32D9", fg: "#FFFFFF", artBg: "#4C1D9E", rot: 24, watermark: "SELIM", wm: 300, sticker: "Skrining mandiri",
     note: "Skrining awal hipertensi dan diabetes, disertai saran gaya hidup sehat.",
     tryText: "Pilih nilai contoh: jarum pada gauge berpindah. Ilustrasi saja, bukan diagnosis.",
