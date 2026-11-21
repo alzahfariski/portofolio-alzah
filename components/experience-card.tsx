@@ -3,12 +3,21 @@
 import { CompanyExperience } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { skipOptimize, localLogo } from "@/lib/images";
 import { Caveat } from "next/font/google";
 
 const caveat = Caveat({
     subsets: ["latin"],
     weight: ["400", "700"],
 });
+
+// Nilai tanggal dari Firestore setelah diserialisasi ({seconds}) atau string/Date.
+type DateLike = { seconds: number } | string | number | Date | null | undefined;
+const toDate = (v: DateLike): Date =>
+    v && typeof v === "object" && !(v instanceof Date) && "seconds" in v
+        ? new Date(v.seconds * 1000)
+        : new Date(v as string | number | Date);
 
 const cardVariants = {
     initial: {
@@ -26,27 +35,26 @@ interface ExperienceCardProps {
 
 export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) => {
     // Helper to format date
-    const formatDate = (dateValue: any) => {
+    // Zona waktu dikunci ke UTC (sama dengan server Vercel) supaya HTML server dan browser identik
+    // (sebelumnya zona waktu browser berbeda dapat menggeser bulan -> hydration mismatch #418).
+    const formatDate = (dateValue: DateLike) => {
         if (!dateValue) return 'Present';
-        const date = dateValue.seconds
-            ? new Date(dateValue.seconds * 1000)
-            : new Date(dateValue);
+        const date = toDate(dateValue);
 
         return date.toLocaleDateString('en-US', {
             month: 'short',
             year: 'numeric',
+            timeZone: 'UTC',
         });
     };
 
     // Helper to calculate duration
-    const calculateDuration = (start: any, end: any) => {
-        const startDate = start?.seconds ? new Date(start.seconds * 1000) : new Date(start);
-        const endDate = end
-            ? (end.seconds ? new Date(end.seconds * 1000) : new Date(end))
-            : new Date();
+    const calculateDuration = (start: DateLike, end: DateLike) => {
+        const startDate = toDate(start);
+        const endDate = end ? toDate(end) : new Date();
 
-        let totalMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12;
-        totalMonths += endDate.getMonth() - startDate.getMonth();
+        let totalMonths = (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12;
+        totalMonths += endDate.getUTCMonth() - startDate.getUTCMonth();
         totalMonths += 1;
 
         const years = Math.floor(totalMonths / 12);
@@ -74,9 +82,13 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                 {/* Header Section */}
                 <div className="flex items-center">
                     <div className="bg-[#FF5C0C] p-2 rounded-xl shadow-sm">
-                        <img
+                        <Image
                             src="/images/work/work-head.png"
-                            alt="Logo"
+                            alt=""
+                            aria-hidden="true"
+                            width={100}
+                            height={100}
+                            sizes="28px"
                             className="w-7 h-7 rounded-lg object-contain"
                         />
                     </div>
@@ -94,19 +106,23 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                              <div className="absolute -left-[4.5px] top-0 w-2 h-2 rounded-full bg-neutral-300 group-hover/item:bg-[#FF5C0C] transition-colors" />
 
                             <div className="flex items-center justify-between">
-                                <span className="text-[9px] font-bold text-neutral-400 uppercase tracking-widest">
+                                <span className="text-xs font-bold text-neutral-600 uppercase tracking-widest">
                                     {exp.type}
                                 </span>
-                                <span className="text-[9px] font-bold text-neutral-400">
+                                <span className="text-xs font-bold text-neutral-600">
                                     {calculateDuration(exp.periodStart, exp.periodEnd)}
                                 </span>
                             </div>
                             
                             <div className="flex items-center gap-2 -mt-1">
                                 {exp.imageUrl && (
-                                    <img
-                                        src={Array.isArray(exp.imageUrl) ? exp.imageUrl[0] : exp.imageUrl}
-                                        alt={exp.company}
+                                    <Image
+                                        src={localLogo(Array.isArray(exp.imageUrl) ? exp.imageUrl[0] : exp.imageUrl)}
+                                        alt={`Logo ${exp.company}`}
+                                        width={20}
+                                        height={20}
+                                        sizes="20px"
+                                        unoptimized={skipOptimize(Array.isArray(exp.imageUrl) ? exp.imageUrl[0] : exp.imageUrl)}
                                         className="w-5 h-5 object-contain rounded-md bg-white p-0.5 border border-neutral-100"
                                     />
                                 )}
@@ -123,7 +139,7 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                                             <span className="text-xs text-neutral-700 font-bold leading-none">
                                                 {role.role}
                                             </span>
-                                            <span className="text-[8px] text-neutral-400 font-medium whitespace-nowrap ml-2">
+                                            <span className="text-xs text-neutral-600 font-medium whitespace-nowrap ml-2">
                                                 {formatDate(role.periodStart)} — {formatDate(role.periodEnd)}
                                             </span>
                                         </div>
@@ -131,7 +147,7 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
                                         {role.description && (
                                             <ul className="flex flex-col gap-1.5 mt-1">
                                                 {role.description.split('•').filter(p => p.trim()).map((point, pIndex) => (
-                                                    <li key={pIndex} className="text-[10px] text-neutral-500 leading-relaxed flex gap-2">
+                                                    <li key={pIndex} className="text-xs text-neutral-700 leading-relaxed flex gap-2">
                                                         <span className="text-[#FF5C0C]/50 mt-0.5">•</span>
                                                         <span>{point.trim()}</span>
                                                     </li>
@@ -147,7 +163,7 @@ export const ExperienceCard = ({ experiences, className }: ExperienceCardProps) 
 
                 {/* Footer/More CTA */}
                 <div className="mt-3 flex justify-end items-center">
-                    <span className={`text-lg text-neutral-400 italic ${caveat.className}`}>
+                    <span className={`text-lg text-neutral-600 italic ${caveat.className}`}>
                         and more professional journey...
                     </span>
                 </div>

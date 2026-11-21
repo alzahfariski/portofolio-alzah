@@ -1,8 +1,8 @@
 # Alzah Fariski - Modern Portfolio
 
-A premium, interactive portfolio built with Next.js 15, featuring a dynamic Bento Grid layout and smooth micro-animations. This project showcases my journey, skills, and professional experience as a Software Developer.
+A premium, interactive portfolio built with Next.js 16.4, featuring a dynamic Bento Grid layout and smooth micro-animations. This project showcases my journey, skills, and professional experience as a Software Developer.
 
-![Portfolio Preview](/public/img/preview.png)
+![Portfolio Preview](public/img/preview.png)
 
 ## 🚀 Features
 
@@ -10,21 +10,22 @@ A premium, interactive portfolio built with Next.js 15, featuring a dynamic Bent
 - **Interactive Components**: Engaging experience, education, and skill cards with fluid animations powered by Framer Motion.
 - **Firebase Integration**: Robust backend integration for profile data and real-time updates.
 - **Modern Tech Stack**: Built with the latest versions of Next.js, React, and Tailwind CSS.
+- **Aksesibilitas gerak**: animasi mengikuti `prefers-reduced-motion` (lewat `MotionConfig` di `components/motion-provider.tsx`).
 - **Premium Aesthetics**: Curated color palettes, glassmorphism effects, and custom typography for a high-end feel.
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: [Next.js 15](https://nextjs.org/), [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
+- **Frontend**: [Next.js 16.4](https://nextjs.org/), [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Backend/Database**: [Firebase](https://firebase.google.com/)
-- **Fonts**: [Geist](https://vercel.com/font), [Caveat](https://fonts.google.com/specimen/Caveat)
+- **Fonts**: [Zalando Sans Expanded](https://fonts.google.com/specimen/Zalando+Sans+Expanded) (teks utama), [Caveat](https://fonts.google.com/specimen/Caveat)
 
 ## 🏁 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 20.9+ (syarat Next.js 16)
 - npm / pnpm / yarn
 
 ### Installation
@@ -70,3 +71,10 @@ Feel free to reach out via the contact card in the portfolio or connect with me 
 ---
 
 Developed with ❤️ by [Alzah Fariski](https://github.com/alzahfariski)
+
+## Fixture data asli (SAMPLE_DATA=1)
+
+- `fixtures/sample-data.ts` (pengalaman, pendidikan) dan `data/projects-live.json` (25 proyek) disalin dari data PUBLIK situs live https://alzahfariski.vercel.app/ pada 21 Nov 2026 (hanya baca, tanpa koneksi atau penulisan Firebase). Tanggal apa adanya dari Firestore (tidak diperbaiki).
+- Cara memperbarui: ambil HTML beranda dan /project, ambil payload RSC (`self.__next_f.push`), salin ulang `experiences`, `educations`, dan daftar proyek (id, title, category, client, description, tags, year, URL gambar tanpa query) ke berkas di atas. Kunci/env Firebase tidak diperlukan.
+- Tes: `SAMPLE_DATA=1 npm run build && SAMPLE_DATA=1 npm start`.
+- Gambar asli proyek (`lh3.googleusercontent.com`) lewat `next/image`; hanya Habitly dan LaundryKu dipakai (`IMG_OK` di `data/featured.ts`). Cadangan: mockup SVG.

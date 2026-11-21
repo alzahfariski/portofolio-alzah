@@ -3,6 +3,7 @@
 import { UserProfile } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import SkillSection from './SkillSection';
 
 const cardVariants = {
@@ -36,9 +37,13 @@ export const SkillCard = ({ skills, className }: SkillCardProps) => {
                 {/* Header Section */}
                 <div className="flex items-center">
                     <div className="bg-[#FFE500] p-2 rounded-xl shadow-sm">
-                        <img
+                        <Image
                             src="/images/skill/skill-head.png"
-                            alt="Logo"
+                            alt=""
+                            aria-hidden="true"
+                            width={100}
+                            height={100}
+                            sizes="32px"
                             className="w-8 h-8 rounded-lg object-contain"
                         />
                     </div>

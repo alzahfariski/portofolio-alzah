@@ -3,6 +3,7 @@
 import { Education } from "@/lib/types";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const cardVariants = {
     initial: {
@@ -37,9 +38,13 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                 {/* Header Section */}
                 <div className="flex items-center">
                     <div className="bg-[#58CA81] p-2 rounded-xl shadow-sm">
-                        <img
+                        <Image
                             src="/images/edu/edu-head.png"
-                            alt="Logo"
+                            alt=""
+                            aria-hidden="true"
+                            width={100}
+                            height={100}
+                            sizes="32px"
                             className="w-8 h-8 rounded-lg object-contain"
                         />
                     </div>
@@ -84,9 +89,13 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             className="w-10 h-10 rounded-xl overflow-hidden border-2 border-white shadow-sm z-14 bg-white"
                         >
-                            <img
+                            <Image
                                 src="/images/edu/edu-3.png"
-                                alt="Education Icon"
+                                alt=""
+                                aria-hidden="true"
+                                width={100}
+                                height={100}
+                                sizes="40px"
                                 className="w-full h-full object-cover"
                             />
                         </motion.div>
@@ -98,9 +107,13 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             className="w-10 h-10 rounded-xl overflow-hidden border-2 border-white shadow-sm z-13 bg-white"
                         >
-                            <img
+                            <Image
                                 src="/images/edu/edu-2.png"
-                                alt="Education Icon"
+                                alt=""
+                                aria-hidden="true"
+                                width={100}
+                                height={100}
+                                sizes="40px"
                                 className="w-full h-full object-cover"
                             />
                         </motion.div>
@@ -112,9 +125,13 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             className="w-10 h-10 rounded-xl overflow-hidden border-2 border-white shadow-sm z-12 bg-white"
                         >
-                            <img
+                            <Image
                                 src="/images/edu/edu-1.png"
-                                alt="Education Icon"
+                                alt=""
+                                aria-hidden="true"
+                                width={100}
+                                height={100}
+                                sizes="40px"
                                 className="w-full h-full object-cover"
                             />
                         </motion.div>
@@ -126,9 +143,13 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             className="w-10 h-10 rounded-xl overflow-hidden border-2 border-white shadow-sm z-11 bg-white"
                         >
-                            <img
+                            <Image
                                 src="/images/edu/edu-4.png"
-                                alt="Education Icon"
+                                alt=""
+                                aria-hidden="true"
+                                width={100}
+                                height={100}
+                                sizes="40px"
                                 className="w-full h-full object-cover"
                             />
                         </motion.div>
@@ -140,9 +161,13 @@ export const EducationCard = ({ educations, className }: EducationCardProps) => 
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             className="w-10 h-10 rounded-xl overflow-hidden border-2 border-white shadow-sm z-10 bg-white"
                         >
-                            <img
+                            <Image
                                 src="/images/edu/edu-5.png"
-                                alt="Education Icon"
+                                alt=""
+                                aria-hidden="true"
+                                width={100}
+                                height={100}
+                                sizes="40px"
                                 className="w-full h-full object-cover"
                             />
                         </motion.div>

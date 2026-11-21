@@ -2,6 +2,9 @@
 
 import { Project } from "@/lib/types";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { skipOptimize } from "@/lib/images";
+import { formatYear } from "@/lib/utils";
 
 interface ProjectCardProps {
   project: Project;
@@ -28,9 +31,14 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
     >
       {/* Image Container */}
       <div className="relative overflow-hidden rounded-2xl bg-neutral-100">
-        <img
+        <Image
           src={project.imageUrl}
-          alt={project.title}
+          alt={typeof project.title === "string" ? project.title : "Project"}
+          width={800}
+          height={600}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={index < 2}
+          unoptimized={skipOptimize(project.imageUrl)}
           className="w-full h-auto object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />
 
@@ -65,9 +73,7 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
             {typeof project.title === 'object' ? 'Project' : project.title}
           </h3>
           <span className="text-xs text-neutral-400 font-medium ml-2 shrink-0">
-            {project.year && typeof project.year === 'object' && (project.year as any).seconds 
-              ? new Date((project.year as any).seconds * 1000).getFullYear()
-              : String(project.year || '')}
+            {formatYear(project.year)}
           </span>
         </div>
 

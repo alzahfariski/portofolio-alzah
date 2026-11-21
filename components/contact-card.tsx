@@ -1,8 +1,8 @@
 'use client';
 
-import { UserProfile } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const cardVariants = {
     initial: {
@@ -32,9 +32,13 @@ export const ContactCard = ({ className }: ContactCardProps) => {
             {/* Header Section */}
             <div className="flex items-center mb-6 relative z-10">
                 <div className="bg-[#0074FE] p-2 rounded-xl shadow-sm">
-                     <img
+                     <Image
                             src="/images/contact/contact-head.png"
-                            alt="Logo"
+                            alt=""
+                            aria-hidden="true"
+                            width={100}
+                            height={100}
+                            sizes="32px"
                             className="w-8 h-8 rounded-lg object-contain"
                         />
                 </div>
@@ -53,9 +57,13 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute bottom-[170px] left-[125px] w-24 h-24 rounded-xl overflow-hidden z-11"
                 >
-                    <img
-                        src="/images/contact/cv-4.png"
-                        alt="Background 1"
+                    <Image
+                        src="/images/contact/cv-4.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={256}
+                        height={256}
+                        sizes="96px"
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
@@ -67,9 +75,13 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute bottom-[170px] left-[85px] w-24 h-24 rounded-xl overflow-hidden z-11"
                 >
-                    <img
-                        src="/images/contact/cv-3.png"
-                        alt="Background 1"
+                    <Image
+                        src="/images/contact/cv-3.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={256}
+                        height={256}
+                        sizes="96px"
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
@@ -81,9 +93,13 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute bottom-[170px] left-[45px] w-24 h-24 rounded-xl overflow-hidden z-11"
                 >
-                    <img
-                        src="/images/contact/cv-2.png"
-                        alt="Background 1"
+                    <Image
+                        src="/images/contact/cv-2.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={256}
+                        height={256}
+                        sizes="96px"
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
@@ -95,9 +111,13 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute bottom-[170px] left-[540px] h-24 rounded-xl overflow-hidden z-11"
                 >
-                    <img
-                        src="/images/contact/cv-7.png"
-                        alt="Background 1"
+                    <Image
+                        src="/images/contact/cv-7.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={256}
+                        height={256}
+                        sizes="96px"
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
@@ -109,9 +129,13 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute bottom-[170px] left-[495px] h-24 rounded-xl overflow-hidden z-11"
                 >
-                    <img
-                        src="/images/contact/cv-6.png"
-                        alt="Background 1"
+                    <Image
+                        src="/images/contact/cv-6.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={256}
+                        height={256}
+                        sizes="96px"
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
@@ -123,9 +147,13 @@ export const ContactCard = ({ className }: ContactCardProps) => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="absolute bottom-[170px] left-[450px] h-24 rounded-xl overflow-hidden z-11"
                 >
-                    <img
-                        src="/images/contact/cv-5.png"
-                        alt="Background 1"
+                    <Image
+                        src="/images/contact/cv-5.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={256}
+                        height={256}
+                        sizes="96px"
                         className="w-full h-full object-cover"
                     />
                 </motion.div>
@@ -215,7 +243,7 @@ export const ContactCard = ({ className }: ContactCardProps) => {
             
             {/* Minimal Footer */}
             <div className="mt-6 flex justify-center relative z-10 border-t border-neutral-100 pt-4">
-                <p className="text-[10px] text-neutral-400 font-medium uppercase tracking-widest">Let's work together</p>
+                <p className="text-[10px] text-neutral-400 font-medium uppercase tracking-widest">Let&apos;s work together</p>
             </div>
         </motion.div>
     );

@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { skipOptimize } from "@/lib/images";
+import { formatYear } from "@/lib/utils";
 import { Project, ProjectDetail } from "@/lib/types";
 import { getProjectDetail } from "@/lib/firestore";
 
@@ -12,20 +15,25 @@ interface ProjectModalProps {
 }
 
 export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
-  const [details, setDetails] = useState<ProjectDetail | null>(null);
-  const [loading, setLoading] = useState(false);
+  // Hasil dimuat disimpan bersama id proyeknya; "loading" dan "details" diturunkan saat render
+  // (tanpa setState sinkron di dalam effect).
+  const [result, setResult] = useState<{ id: string; data: ProjectDetail | null } | null>(null);
+
+  const projectId = isOpen ? project?.id : undefined;
+  const hasResult = !!projectId && result?.id === projectId;
+  const loading = !!projectId && !hasResult;
+  const details = hasResult ? result.data : null;
 
   useEffect(() => {
-    if (isOpen && project?.id) {
-      setLoading(true);
-      getProjectDetail(project.id).then((data) => {
-        setDetails(data);
-        setLoading(false);
-      });
-    } else {
-      setDetails(null);
-    }
-  }, [isOpen, project]);
+    if (!projectId) return;
+    let cancelled = false;
+    getProjectDetail(projectId).then((data) => {
+      if (!cancelled) setResult({ id: projectId, data });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [projectId]);
 
   // Handle escape key
   useEffect(() => {
@@ -81,10 +89,13 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
 
             {/* Header / Hero Image */}
             <div className="relative w-full h-64 sm:h-80 md:h-96 bg-neutral-100 shrink-0">
-              <img
+              <Image
                 src={project.imageUrl}
-                alt={project.title}
-                className="w-full h-full object-cover"
+                alt={typeof project.title === "string" ? project.title : "Project"}
+                fill
+                unoptimized={skipOptimize(project.imageUrl)}
+                sizes="(max-width: 896px) 100vw, 896px"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
@@ -105,9 +116,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                   <span>{project.category}</span>
                   <span>•</span>
                   <span>
-                    {project.year && typeof project.year === 'object' && (project.year as any).seconds 
-                      ? new Date((project.year as any).seconds * 1000).getFullYear()
-                      : String(project.year || '')}
+                    {formatYear(project.year)}
                   </span>
                 </div>
               </div>
@@ -203,7 +212,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                       <h3 className="text-xl font-semibold mb-4 text-neutral-900">Gallery</h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {details.gallery.map((img, i) => (
-                          <img key={i} src={img} alt={`Gallery ${i}`} className="w-full h-auto rounded-xl border border-neutral-100 object-cover" />
+                          <Image key={i} src={img} alt={`Galeri ${typeof project.title === "string" ? project.title : "proyek"} ${i + 1}`} width={800} height={600} sizes="(max-width: 640px) 100vw, 400px" unoptimized={skipOptimize(img)} className="w-full h-auto rounded-xl border border-neutral-100 object-cover" />
                         ))}
                       </div>
                     </section>
@@ -213,7 +222,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
               ) : (
                 <div className="py-12 text-center text-neutral-500">
                   <p className="text-lg mb-2 text-neutral-800 font-medium">Detailed information is not available yet.</p>
-                  <p className="text-sm">We're still preparing the detailed case study for this project. Keep an eye out for updates!</p>
+                  <p className="text-sm">We&apos;re still preparing the detailed case study for this project. Keep an eye out for updates!</p>
                 </div>
               )}
             </div>
