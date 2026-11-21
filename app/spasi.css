@@ -167,3 +167,10 @@ footer { margin-top: var(--sec); padding-top: 0 !important; }
   .mock.win { width: min(290px, calc(100vw - 2 * var(--gutter) - 2 * var(--s5))); }
   .wbody { grid-template-columns: 64px 1fr; }
 }
+
+/* penutup: tautan sekunder tanpa titik pemisah (jarak dari gap, tidak ada titik menggantung) */
+.alt a { padding: 0 var(--s1); }
+/* siklus: tag dalam bentuk chip, sejajar di dasar tiap kolom */
+.sk li { display: flex; flex-direction: column; }
+.sk small { margin-top: auto; padding-top: var(--s3); }
+.sk small span { border: 1px solid var(--garis); border-radius: 999px; padding: 0 var(--s2); background: #fff; }

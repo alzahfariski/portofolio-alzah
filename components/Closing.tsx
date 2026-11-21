@@ -28,11 +28,9 @@ export default function Closing() {
             <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>{" "}
-            ·{" "}
             <a href={SITE.linkedinUrl} target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>{" "}
-            ·{" "}
             <a href={SITE.githubUrl} target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
