@@ -5,7 +5,6 @@ export default function KaryaSection() {
   return (
     <section className="wrap karya" id="karya" aria-labelledby="karya-judul">
       <div className="intro">
-        <span className="hand">lihat karyaku!</span>
         <h2 id="karya-judul">
           Karya pilihan<sup aria-hidden="true">(04)</sup>
         </h2>

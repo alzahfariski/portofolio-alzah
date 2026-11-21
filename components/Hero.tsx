@@ -1,7 +1,6 @@
 import { SITE } from "@/config/site";
 import StatusPill from "@/components/StatusPill";
 import ContactGrid from "@/components/ContactGrid";
-import ProjectFan from "@/components/ProjectFan";
 import ExperienceList from "@/components/ExperienceList";
 import type { CompanyExperience, Education } from "@/lib/types";
 
@@ -37,7 +36,6 @@ export default function Hero({
         </div>
         <ContactGrid />
       </div>
-      <ProjectFan />
       <ExperienceList experiences={experiences} educations={educations} />
     </section>
   );

@@ -47,10 +47,6 @@ export default function ProjectFan() {
           </li>
         ))}
       </ul>
-      <p className="hint mono-label">
-        <i />
-        Pilih kartu<span className="hx">&nbsp;atau gulir</span>
-      </p>
     </div>
   );
 }

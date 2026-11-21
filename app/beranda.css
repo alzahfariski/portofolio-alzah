@@ -1,6 +1,6 @@
 /* Beranda konsep 10 (tahap 1). Token warna ada di globals.css. */
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
-.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);grid-template-areas:"id fan" "id xp";column-gap:56px;padding-top:28px;padding-bottom:40px;align-items:start}
+.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);grid-template-areas:"id xp";column-gap:56px;padding-top:28px;padding-bottom:40px;align-items:start}
 .idb{grid-area:id}
 .status{display:inline-flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--tinta);border-radius:999px;padding:6px 16px 6px 12px;font-weight:700;font-size:15px;line-height:1.3}
 .status b{flex:0 0 11px;height:11px;border-radius:50%;background:var(--status);box-shadow:0 0 0 4px var(--status-halo)}
@@ -37,12 +37,17 @@
 .rl{display:flex;justify-content:space-between;gap:12px;align-items:baseline;line-height:1.35}
 .rl span:first-child{font-size:16px;font-weight:600}
 .rl .mono-label{white-space:nowrap;letter-spacing:.04em}
+.edh{margin-top:18px;padding-top:10px;border-top:1px solid var(--garis)}
+.edl{list-style:none;padding:0;margin:0;display:grid}
+.edl li{padding:6px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline;line-height:1.35;font-size:16px;color:var(--tinta-lembut)}
+.edl .mono-label{white-space:nowrap;letter-spacing:.04em}
+.fansec{padding-top:8px;padding-bottom:8px}
 .edu{border-top:1px solid var(--garis);padding-top:10px;font-size:16px;color:var(--tinta-lembut)}
 .edu .mono-label{display:block}
 /* tombol melayang (ponsel) */
 .fab{display:none}
 @media(max-width:1100px){.hero h1{font-size:104px}}
-@media(max-width:1000px){.hero{grid-template-columns:1fr;grid-template-areas:"id" "fan" "xp";row-gap:28px}
+@media(max-width:1000px){.hero{grid-template-columns:1fr;grid-template-areas:"id" "xp";row-gap:28px}
 .hand{margin-left:16px}}
 @media(max-width:600px){.wrap{padding:0 20px}
 .hero{padding-top:14px;padding-bottom:28px;row-gap:14px}
@@ -52,7 +57,20 @@
 .lead{font-size:17px;margin:16px 0 14px;line-height:1.4}
 .btns{gap:10px;flex-wrap:nowrap}.btns .btn{flex:1;padding:0 12px;font-size:16px;min-height:50px}.cvb{min-height:50px;padding:0 12px 0 10px;gap:8px}
 .ct{margin-top:12px;gap:2px 16px}.ct li{padding-top:2px}.ct li:first-child{grid-column:1/-1}.ct a{min-height:44px;font-size:16px}
-.xp .rl{flex-direction:column;gap:0}
+.xp .rl,.edl li{flex-direction:column;gap:0}
 .fab{display:flex;position:fixed;left:16px;right:16px;bottom:12px;z-index:40;min-height:56px;box-shadow:0 10px 24px -8px rgba(37,71,232,.6);opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .25s,transform .25s,visibility .25s}
 .fab.on{opacity:1;visibility:visible;transform:none}
 .fanb .hint{position:absolute;right:2px;top:10px;margin:0}.fanb .hint i,.hx{display:none}}
+
+/* siklus end-to-end */
+.siklus{padding-top:32px;padding-bottom:24px}
+.siklus h2{margin-bottom:10px}
+.sk{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--tinta)}
+.sk li{display:grid;align-content:start;gap:6px;padding:16px 20px 18px 0;position:relative}
+.sk li+li{padding-left:20px;border-left:1px solid var(--garis)}
+.sk i{font-family:var(--font-jetbrains-mono),"DejaVu Sans Mono",monospace;font-style:normal;font-weight:700;font-size:15px;color:#C8213B}
+.sk b{font-size:24px;line-height:1.1;letter-spacing:-.02em;font-weight:800}
+.sk span{font-size:16px;line-height:1.4;color:var(--tinta-lembut)}
+.sk small{margin-top:4px;letter-spacing:.04em}
+@media(max-width:1000px){.sk{grid-template-columns:repeat(2,minmax(0,1fr))}.sk li:nth-child(odd){padding-left:0;border-left:0}.sk li:nth-child(n+3){border-top:1px solid var(--garis)}}
+@media(max-width:600px){.sk{grid-template-columns:1fr}.sk li,.sk li+li{padding:12px 0;border-left:0}.sk li+li{border-top:1px solid var(--garis)}.sk b{font-size:21px}}

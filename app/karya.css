@@ -147,7 +147,7 @@ button.dtl i:after{content:"";position:absolute;left:5px;top:2px;width:2px;heigh
 @media(max-width:600px){.fan{--W:100px;--sp:68px;--s:.35;--ox:16px;height:178px;margin-top:2px}.mini{top:8px;border-radius:16px}.mini button{padding:9px 6px 9px 10px;border-radius:16px}.mini b{font-size:22px}.mini strong{font-size:14px;margin-top:4px;letter-spacing:-.04em;white-space:nowrap}.mini small{font-size:14px;letter-spacing:-.02em;line-height:1.1;white-space:normal;max-width:60px}.art{margin-top:6px;border-radius:8px}}
 @media(prefers-reduced-motion:reduce){.mini{animation:none}}
 /* ponsel/tablet: kipas dinaikkan di atas kontak agar tampil penuh di layar pertama */
-@media(max-width:1000px){.hero{grid-template-areas:none;display:flex;flex-direction:column;gap:14px}.idb{display:contents}.hero .ct{order:5}.hero .fanb{order:4;width:100%}.hero .xp{order:6;margin-top:10px}}
+@media(max-width:1000px){.hero{grid-template-areas:none;display:flex;flex-direction:column;gap:14px}.idb{display:contents}.hero .ct{order:5}.hero .xp{order:6;margin-top:10px}}
 .shot{position:relative;width:100%;max-width:280px;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#fff;margin-top:18px;border:2px solid rgba(255,255,255,.7)}
 .bdg small.req{font-size:13px;color:#4A4437;line-height:1.1;text-align:center;font-weight:600}
 .bdg span{max-width:33%}
