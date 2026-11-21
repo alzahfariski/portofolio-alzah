@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import type { Featured } from "@/data/featured";
+import RealImg from "@/components/RealImg";
 
 // Interaksi COBA dimuat malas (dynamic). Tanpa JS, HTML server tetap menampilkan keadaan awal yang statis.
 const TRY = {
@@ -9,25 +10,9 @@ const TRY = {
   selim: dynamic(() => import("@/components/trial/TrySelim")),
 } as const;
 
-export default function ProjectCard({ p, index }: { p: Featured; index: number }) {
+export default function ProjectCard({ p }: { p: Featured; index: number }) {
   const Try = TRY[p.kind];
-  const rc = `rc${index}`;
-  const label = p.detailUrl ? `Buka detail proyek ${p.title}` : `Detail proyek ${p.title}: segera tersedia`;
-  const ring = (
-    <>
-      <svg viewBox="0 0 150 150" aria-hidden="true">
-        <defs>
-          <path id={rc} d="M75 75 m-56 0 a56 56 0 1 1 112 0 a56 56 0 1 1 -112 0" />
-        </defs>
-        <text>
-          <textPath href={`#${rc}`} textLength="344" lengthAdjust="spacing">
-            {p.detailUrl ? "LIHAT DETAIL · LIHAT DETAIL · " : "DETAIL SEGERA · DETAIL SEGERA · "}
-          </textPath>
-        </text>
-      </svg>
-      <b aria-hidden="true">&#8599;</b>
-    </>
-  );
+  const label = p.detailUrl ? `Buka detail proyek ${p.title}` : `Detail proyek ${p.title}: belum tersedia`;
   return (
     <article
       className="pc"
@@ -57,14 +42,23 @@ export default function ProjectCard({ p, index }: { p: Featured; index: number }
               </li>
             ))}
           </ul>
+          {p.client && (
+            <p className="clientm">Klien: {p.client}</p>
+          )}
+          {p.img && (
+            <div className="shot">
+              <RealImg src={p.img} sizes="(max-width: 1000px) 90vw, 280px" />
+            </div>
+          )}
           {p.detailUrl ? (
-            <a className="round" href={p.detailUrl} aria-label={label} target="_blank" rel="noopener noreferrer">
-              {ring}
+            <a className="dtl" href={p.detailUrl} aria-label={label} target="_blank" rel="noopener noreferrer">
+              Lihat detail <b aria-hidden="true">&#8599;</b>
             </a>
           ) : (
-            <div className="round" role="img" aria-label={label}>
-              {ring}
-            </div>
+            <button type="button" className="dtl" aria-disabled="true" aria-label={label}>
+              <i aria-hidden="true" />
+              Detail segera
+            </button>
           )}
         </div>
         <div className="stage">
