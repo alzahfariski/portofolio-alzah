@@ -32,6 +32,8 @@ function periode(p: string): string {
 // Tampilan saja: institusi berbahasa Indonesia dan "iOS" berhuruf benar. Data Firestore tidak diubah.
 const INSTITUSI: Record<string, string> = { "Bengkulu University": "Universitas Bengkulu" };
 const rapi = (s: string) => s.replace(/\bIos\b/g, "iOS");
+// Kata terakhir nama institusi dirapatkan dengan spasi tak-putus supaya tidak menggantung sendirian ("Universitas Bengkulu").
+const rapat = (s: string) => s.replace(/ (\S+)$/, "\u00A0$1");
 
 export default function ExperienceList({
   experiences,
@@ -78,7 +80,7 @@ export default function ExperienceList({
               return (
                 <li key={e.institution + e.degree}>
                   <span>
-                    {rapi(e.degree)}, {INSTITUSI[e.institution] ?? e.institution}
+                    {rapi(e.degree)}, {rapat(INSTITUSI[e.institution] ?? e.institution)}
                   </span>
                   {p && <span className="mono-label">{p}</span>}
                 </li>

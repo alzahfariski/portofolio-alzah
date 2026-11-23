@@ -132,3 +132,44 @@ html.lenis, html.lenis body { height: auto; }
 
 /* kontras: stiker dan chip di bagian gelap memakai kuning aksen dengan teks gelap */
 .t-karya .sticker, .t-karya .chip { background: var(--ac); color: #16140f; }
+
+/* ===== Perapian susulan (rapi-gaya-kamal): palet 7 warna TIDAK diubah ===== */
+/* 1. Label mono dan tanggal: lebih gelap dan >= 14-15 px */
+.mono-label { color: color-mix(in srgb, var(--tinta-lembut) 35%, var(--ink, #16140f)); font-size: 15px; }
+.clock, .t-hero .clock { color: #2b2619; font-size: 15px; }
+.ct .mono-label { font-weight: 600; }
+.rl .mono-label, .edl .mono-label { font-size: 15px; font-weight: 500; }
+.edl li { color: var(--ink, #16140f); }
+@media (max-width: 600px) {
+  .mono-label, .clock { font-size: 14px; }
+  .rl .mono-label, .edl .mono-label { font-size: 14px; }
+}
+
+/* 2. Hero: spasi baris nama dan sorotan sejajar huruf */
+.hero h1 { line-height: 0.98; padding-top: 0.04em; }
+.hero h1 mark { display: inline-block; line-height: 0.9; padding: 0 0.05em 0.02em; margin: 0 -0.05em; background: linear-gradient(transparent 62%, var(--hl) 62%); }
+@media (min-width: 1001px) {
+  .xp.band-in { padding: var(--s5) var(--s6); }
+  .xp li { padding: var(--s3) 0; }
+  .edl li { padding: var(--s2) 0; }
+  .hero { padding-top: var(--s4); }
+  .band.t-hero { padding-bottom: var(--s8); }
+}
+
+/* 3. Siklus ponsel: padding kiri dari rel, lingkaran panah di rel, jarak lega dari tag */
+@media (max-width: 600px) {
+  .sk li, .sk li + li, .sk li:nth-child(even), .sk li:nth-child(odd) { padding: var(--s4) 0 var(--s7) var(--s6); }
+  .sk li:last-child, .sk li + li:last-child { padding-bottom: var(--s5); }
+  .sk li:not(:last-child)::after, .sk li:nth-child(odd):not(:last-child)::after, .sk li:nth-child(2)::after {
+    left: -16px !important; bottom: calc(var(--s3) * -1) !important;
+  }
+  .sk small { padding-top: var(--s4); }
+}
+
+/* 4. Bukti: tautan terlihat sebagai tautan */
+.bkl a b { color: var(--ac); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.bkl a .bkm { font-style: normal; font-family: var(--font-jetbrains-mono), monospace; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ac); margin-top: var(--s1); }
+.bkl a:hover b, .bkl a:focus-visible b { color: var(--acd); }
+.bkl a.bkb { background: #fff; border: 2px solid var(--ac); border-radius: 14px; padding: var(--s3) var(--s4); margin: var(--s3) 0; }
+.bkl a.bkb b { text-decoration: none; }
+.bkl a.bkb:hover { background: var(--hl); }
