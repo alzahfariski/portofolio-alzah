@@ -1,0 +1,176 @@
+/* ===== Sistem spasi (satu skala) =====
+   Skala: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 px.
+   --gutter : margin kiri-kanan konten (sama untuk header, semua bagian, footer)
+   --sec    : jarak antar-bagian (batas bagian)
+   --in     : jarak antar-blok di dalam satu bagian
+   --pad    : padding dalam kartu besar (kartu proyek, penutup)
+   Dimuat terakhir; menimpa nilai acak lama di beranda.css dan karya.css. */
+:root {
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+  --s9: 96px;
+  --gutter: 32px;
+  --sec: 96px;
+  --in: 48px;
+  --pad: 40px;
+  --fab-h: 56px;
+}
+@media (max-width: 1000px) {
+  :root { --sec: 64px; --in: 32px; --pad: 32px; }
+}
+@media (max-width: 600px) {
+  :root { --gutter: 20px; --pad: 24px; }
+}
+
+/* margin kiri-kanan: satu nilai dari token */
+.wrap { padding-left: var(--gutter); padding-right: var(--gutter); }
+
+/* ---- ritme antar-bagian: satu nilai (--sec) ---- */
+.hero { padding-top: var(--s6); padding-bottom: 0; }
+.wrap.siklus, .wrap.fansec, .wrap.karya, #kontak.wrap { margin-top: var(--sec); padding-top: 0; padding-bottom: 0; }
+.wrap.karya { scroll-margin-top: 72px; }
+footer { margin-top: var(--sec); padding-top: 0 !important; }
+
+/* ---- hero ---- */
+.hero { column-gap: var(--s8); }
+.status { padding: var(--s2) var(--s4) var(--s2) var(--s3); }
+.role { margin: var(--s4) 0 var(--s3); }
+.lead { margin: var(--s5) 0 var(--s5); }
+.btns { gap: var(--s4); }
+.ct { margin-top: var(--s6); gap: var(--s4) var(--s6); }
+.ct li { border-top: 1px solid var(--garis); padding-top: var(--s2); }
+.cvb { padding: 0 var(--s4) 0 var(--s4); }
+@media (min-width: 1001px) {
+  .hero { align-items: stretch; }
+  .xp { display: flex; flex-direction: column; margin-top: 0; align-self: stretch; }
+  .xp li { padding: var(--s4) 0; }
+  .xp li b { margin-bottom: var(--s1); }
+  .xh { margin-bottom: var(--s3); }
+  .edh { margin-top: auto; padding-top: var(--s4); }
+  .edl li { padding: var(--s3) 0; }
+}
+.xp li, .edh { border-top: 1px solid var(--garis); }
+.xp li:first-child { border-top: 1px solid var(--garis); }
+.edl li + li { border-top: 1px solid var(--garis); }
+.edh { margin-top: var(--s6); padding-top: var(--s4); }
+@media (min-width: 1001px) { .edh { margin-top: auto; } }
+.xh { margin-bottom: var(--s3); }
+.rl { gap: var(--s4); }
+
+/* tablet dan ponsel: satu kolom, jarak antar-blok sama */
+@media (max-width: 1000px) {
+  .hero { gap: var(--s4); row-gap: var(--s4); }
+  .hero .xp { margin-top: var(--s5); }
+  .hand { margin-left: 0; }
+}
+@media (max-width: 600px) {
+  .hero { padding-top: var(--s5); gap: var(--s4); row-gap: var(--s4); }
+  .status { font-size: 14px; padding: var(--s1) var(--s3) var(--s1) var(--s3); }
+  .role { margin: var(--s1) 0 0; }
+  .lead { margin: 0; }
+  .ct { margin-top: var(--s2); gap: var(--s3) var(--s4); }
+  .ct li { padding-top: var(--s1); }
+  .btns { gap: var(--s3); }
+}
+
+/* ---- siklus ---- */
+.siklus h2 { margin-bottom: var(--s4); }
+.sk { border-top: 1px solid var(--garis); }
+.sk li { gap: var(--s2); padding: var(--s5) var(--s5) 0 0; }
+.sk li + li { padding-left: var(--s5); }
+.sk small { margin-top: var(--s1); display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); }
+@media (max-width: 1000px) {
+  .sk li { padding: var(--s5) var(--s5) var(--s1) 0; }
+  .sk li:nth-child(odd) { padding-left: 0; }
+  .sk li:nth-child(even) { padding-left: var(--s5); }
+}
+@media (max-width: 600px) {
+  .sk li, .sk li + li, .sk li:nth-child(even) { padding: var(--s4) 0; }
+}
+
+/* ---- kipas ---- */
+.fanb { padding-top: 0; }
+.hand { display: inline-block; margin-bottom: var(--s2); }
+.fan { margin: var(--s4) 0 0; margin-left: 0; margin-right: 0; max-width: none; }
+
+/* ---- Karya ---- */
+.intro .hand { margin: 0 0 var(--s2); }
+.intro h2 + .introp, .introp { margin-top: var(--s5); }
+.karya .hint { margin: var(--s4) 0 0; }
+.stack { margin-top: var(--in); gap: var(--in); }
+.more { margin-top: var(--in); padding-bottom: 0; }
+.big { margin-bottom: var(--s5); }
+
+/* ---- kartu proyek ---- */
+.tabrow { padding-left: var(--s6); }
+.tab { padding: var(--s2) var(--s5) 0 var(--s5); }
+.pbody { padding: var(--pad); gap: var(--s6); }
+.txt h3 { margin: var(--s3) 0 var(--s4); }
+.pills { margin: var(--s4) 0 0; gap: var(--s2); }
+.pill { padding: var(--s1) var(--s3); }
+.clientm { margin: var(--s4) 0 0; }
+.shot { margin-top: var(--s5); }
+.dtl, a.dtl, button.dtl { margin-top: var(--s6); min-height: 52px; padding: 0 var(--s5); }
+.co { padding: var(--s3) var(--s4); }
+.sticker { padding: var(--s2) var(--s4); }
+@media (max-width: 1000px) {
+  .pbody { padding: var(--pad) var(--pad); }
+  .dtl, a.dtl, button.dtl { margin-top: var(--s6); }
+}
+@media (max-width: 600px) {
+  .tabrow { padding-left: var(--s5); }
+  .pbody { padding: var(--pad) var(--s5); }
+  .stage { padding-bottom: 210px; }
+  .sticker { padding: var(--s2) var(--s3); }
+}
+
+/* ---- penutup ---- */
+.cta { padding: var(--s7); gap: var(--s6); margin: 0; }
+.mailbig { margin-bottom: var(--s5); }
+.alt { margin-top: var(--s5); display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); }
+.cta .introp { margin-top: var(--s4); }
+@media (max-width: 1000px) { .cta { padding: var(--pad); } }
+@media (max-width: 600px) { .cta { padding: var(--s6) var(--s5); } }
+
+/* ---- tombol melayang (ponsel): dari token, sejajar gutter ---- */
+@media (max-width: 600px) {
+  .fab { left: var(--gutter); right: var(--gutter); bottom: var(--s4); min-height: var(--fab-h); }
+  footer { padding-bottom: calc(var(--fab-h) + var(--s4) + var(--s4)) !important; }
+}
+
+/* ---- kipas: masuk grid ---- */
+.fan { --ox: 34px; }
+@media (max-width: 600px) {
+  .fan { --W: 88px; --ox: 14px; --sp: calc((100vw - 2 * var(--gutter) - var(--W) - var(--ox) * 2) / 3); }
+  .mini small { max-width: 56px; }
+  .mini strong { font-size: 13px; letter-spacing: -.05em; }
+  .mini button { padding-left: var(--s2); padding-right: var(--s1); }
+}
+/* kolom kanan hero mengisi tinggi kolom kiri: jarak antar-baris dibagi rata */
+@media (min-width: 1001px) {
+  .xp ol { flex: 1; display: flex; flex-direction: column; }
+  .xp li { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
+}
+.sk small span { white-space: nowrap; }
+
+/* kartu proyek tidak boleh melebihi grid (satu kolom boleh menyusut) */
+@media (max-width: 1000px) { .pbody { grid-template-columns: minmax(0, 1fr); } }
+.pc { min-width: 0; }
+.pbody > .txt, .pbody > .stage { min-width: 0; }
+@media (max-width: 600px) {
+  .mock.win { width: min(290px, calc(100vw - 2 * var(--gutter) - 2 * var(--s5))); }
+  .wbody { grid-template-columns: 64px 1fr; }
+}
+
+/* penutup: tautan sekunder tanpa titik pemisah (jarak dari gap, tidak ada titik menggantung) */
+.alt a { padding: 0 var(--s1); }
+/* siklus: tag dalam bentuk chip, sejajar di dasar tiap kolom */
+.sk li { display: flex; flex-direction: column; }
+.sk small { margin-top: auto; padding-top: var(--s3); }
+.sk small span { border: 1px solid var(--garis); border-radius: 999px; padding: 0 var(--s2); background: #fff; }

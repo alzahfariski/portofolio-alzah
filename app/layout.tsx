@@ -3,6 +3,7 @@ import { Inter_Tight, JetBrains_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { SITE } from "@/config/site";
 import MotionProvider from "@/components/motion-provider";
 
 // Inter Tight variabel: satu berkas (bobot 100-900, dipakai 400-850).
@@ -28,9 +29,9 @@ const caveat = Caveat({
 });
 
 const SITE_URL = "https://alzahfariski.vercel.app";
-const SITE_TITLE = "Alzah Fariski | Portfolio";
+const SITE_TITLE = `Alzah Fariski | ${SITE.role}`;
 const SITE_DESCRIPTION =
-  "Software Developer (Flutter • Next.js • Laravel) | UI/UX Designer with 3+ years of experience";
+  "End-to-End Software Developer: dari perancangan, pembangunan, deployment, sampai pemeliharaan aplikasi mobile dan web (Flutter • Next.js • Laravel).";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
         url: "/og/alzah-fariski-og.png",
         width: 1200,
         height: 630,
-        alt: "Alzah Fariski, Software Developer | UI/UX Enthusiast",
+        alt: `Alzah Fariski, ${SITE.role}: perancangan, pembangunan, deployment, pemeliharaan`,
       },
     ],
   },
@@ -65,7 +66,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Alzah Fariski",
-  jobTitle: "Software Developer",
+  jobTitle: SITE.role,
   url: SITE_URL,
   sameAs: ["https://linkedin.com/in/alzah-fariski", "https://instagram.com/alzahfariski"],
 };

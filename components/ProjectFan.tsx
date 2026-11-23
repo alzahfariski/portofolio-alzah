@@ -1,6 +1,7 @@
 "use client";
 
 import { FEATURED } from "@/data/featured";
+import { getLenis } from "@/lib/lenis";
 
 // Kipas 4 kartu: tombol sungguhan. Ketuk = gulir halus ke kartu proyek berwarna sama
 // (lompat langsung bila pengguna memilih reduced-motion). Fokus dipindah ke kartu tujuan.
@@ -9,7 +10,9 @@ export default function ProjectFan() {
     const el = document.getElementById(id);
     if (!el) return;
     const rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    el.scrollIntoView({ behavior: rm ? "auto" : "smooth", block: "start" });
+    const l = getLenis();
+    if (l && !rm) l.scrollTo(el);
+    else el.scrollIntoView({ behavior: rm ? "auto" : "smooth", block: "start" });
     el.focus({ preventScroll: true });
   };
   return (
@@ -47,10 +50,6 @@ export default function ProjectFan() {
           </li>
         ))}
       </ul>
-      <p className="hint mono-label">
-        <i />
-        Pilih kartu<span className="hx">&nbsp;atau gulir</span>
-      </p>
     </div>
   );
 }

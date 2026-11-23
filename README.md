@@ -1,6 +1,6 @@
 # Alzah Fariski - Modern Portfolio
 
-A premium, interactive portfolio built with Next.js 16.4, featuring a dynamic Bento Grid layout and smooth micro-animations. This project showcases my journey, skills, and professional experience as a Software Developer.
+A premium, interactive portfolio built with Next.js 16.4, featuring a dynamic Bento Grid layout and smooth micro-animations. This project showcases my journey, skills, and professional experience as an End-to-End Software Developer (design, build, deployment, and maintenance).
 
 ![Portfolio Preview](public/img/preview.png)
 

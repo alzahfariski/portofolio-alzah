@@ -72,7 +72,7 @@ export default function ProjectCard({ p }: { p: Featured; index: number }) {
               {p.note}
             </div>
             <div className="co r">
-              <span className="mono-m">COBA 02</span>
+              <span className="mono-m">CONTOH 02</span>
               {p.tryText}
             </div>
           </div>

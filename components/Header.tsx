@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/config/site";
+import LocalClock from "@/components/LocalClock";
 
 const links = [
   { name: "Karya", href: "/#karya" },
@@ -9,7 +10,7 @@ const links = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-garis bg-krem">
-      <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between px-[var(--gutter)]">
         <Link
           href="/"
           aria-label={`AF, ${SITE.name}: ke beranda`}
@@ -17,8 +18,9 @@ export default function Header() {
         >
           AF
         </Link>
+        <LocalClock />
         <nav aria-label="Utama">
-          <ul className="flex list-none items-center gap-1 p-0 text-base font-semibold">
+          <ul className="-mr-3.5 flex list-none items-center gap-2 p-0 text-base font-semibold">
             {links.map((l) => (
               <li key={l.href}>
                 <Link

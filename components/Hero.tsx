@@ -1,7 +1,6 @@
 import { SITE } from "@/config/site";
 import StatusPill from "@/components/StatusPill";
 import ContactGrid from "@/components/ContactGrid";
-import ProjectFan from "@/components/ProjectFan";
 import ExperienceList from "@/components/ExperienceList";
 import type { CompanyExperience, Education } from "@/lib/types";
 
@@ -16,7 +15,9 @@ export default function Hero({
     <section className="wrap hero" id="atas">
       <div className="idb">
         <StatusPill />
-        <p className="role">{SITE.role}</p>
+        <p className="role">
+          <span>{SITE.role.split(" ")[0]}</span> {SITE.role.split(" ").slice(1).join(" ")}
+        </p>
         <h1>
           <span>{SITE.nameFirst}</span>
           <span>
@@ -37,7 +38,6 @@ export default function Hero({
         </div>
         <ContactGrid />
       </div>
-      <ProjectFan />
       <ExperienceList experiences={experiences} educations={educations} />
     </section>
   );

@@ -26,10 +26,6 @@ animation:open .76s cubic-bezier(.2,.75,.2,1) backwards;animation-delay:calc(var
 .intro h2{font-size:120px;line-height:.9;letter-spacing:-.035em;font-weight:850;padding-top:.05em;text-wrap:balance}
 .intro sup{font-family:var(--font-jetbrains-mono),"DejaVu Sans Mono",monospace;font-size:32px;letter-spacing:0;color:#C8213B;font-weight:700;vertical-align:top;position:relative;top:6px;margin-left:14px}
 .introp{color:var(--tinta-lembut);max-width:560px;margin-top:20px;font-size:18px}
-.idx{list-style:none;padding:0;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-top:36px}
-.idx a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px 0 12px;border-radius:14px 14px 0 0;background:var(--c);color:var(--f);font-weight:700;text-decoration:none;font-size:16px;transition:transform .2s}
-.idx a:hover{transform:translateY(-4px)}
-.idx i{font-family:var(--font-jetbrains-mono),"DejaVu Sans Mono",monospace;font-style:normal;font-weight:700;font-size:18px;letter-spacing:-.04em}
 .stack{display:grid;gap:56px;margin-top:40px}
 .pc{position:relative;scroll-margin-top:76px;outline:none}
 .pc:focus-visible .pbody{outline:3px solid var(--aksi);outline-offset:4px}
@@ -138,16 +134,16 @@ button.dtl i:after{content:"";position:absolute;left:5px;top:2px;width:2px;heigh
 .cta{grid-template-columns:1fr;padding:36px 28px}}
 @media(max-width:600px){
 .intro h2{font-size:58px}.intro sup{font-size:20px;top:2px;margin-left:6px}
-.karya{padding-top:36px}.idx{margin-top:24px;gap:6px}.idx a{padding:0 10px 0 8px;font-size:14px;gap:6px}
+.karya{padding-top:36px}
 .tabrow{padding-left:18px}.pbody{padding:24px 20px;border-radius:24px}.txt h3{font-size:42px}
 .stage{padding:170px 0 164px}
 .mock.phone{width:236px}.mock.win{width:min(290px,84vw)}
 .mockw{--sh:50px}.sticker{padding:6px 10px;top:-40px;left:-6px;right:auto}.pc:nth-child(even) .sticker{left:auto;right:-6px}
 .cta{padding:28px 20px}.cta h2{font-size:44px}.mailbig{font-size:21px}.big{font-size:38px}}
-@media(max-width:600px){.fan{--W:100px;--sp:68px;--s:.35;--ox:16px;height:178px;margin-top:2px}.mini{top:8px;border-radius:16px}.mini button{padding:9px 6px 9px 10px;border-radius:16px}.mini b{font-size:22px}.mini strong{font-size:14px;margin-top:4px;letter-spacing:-.04em;white-space:nowrap}.mini small{font-size:14px;letter-spacing:-.02em;line-height:1.1;white-space:normal;max-width:60px}.art{margin-top:6px;border-radius:8px}}
+@media(max-width:600px){.fan{--W:100px;--sp:76px;--s:.35;--ox:16px;height:178px;margin-top:2px}.mini{top:8px;border-radius:16px}.mini button{padding:9px 6px 9px 10px;border-radius:16px}.mini b{font-size:22px}.mini strong{font-size:13.5px;margin-top:4px;letter-spacing:-.045em;white-space:nowrap}.mini small{font-size:14px;letter-spacing:-.02em;line-height:1.1;white-space:normal;max-width:60px}.art{margin-top:6px;border-radius:8px}}
 @media(prefers-reduced-motion:reduce){.mini{animation:none}}
 /* ponsel/tablet: kipas dinaikkan di atas kontak agar tampil penuh di layar pertama */
-@media(max-width:1000px){.hero{grid-template-areas:none;display:flex;flex-direction:column;gap:14px}.idb{display:contents}.hero .ct{order:5}.hero .fanb{order:4;width:100%}.hero .xp{order:6;margin-top:10px}}
+@media(max-width:1000px){.hero{grid-template-areas:none;display:flex;flex-direction:column;gap:14px}.idb{display:contents}.hero .ct{order:5}.hero .xp{order:6;margin-top:10px}}
 .shot{position:relative;width:100%;max-width:280px;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#fff;margin-top:18px;border:2px solid rgba(255,255,255,.7)}
 .bdg small.req{font-size:13px;color:#4A4437;line-height:1.1;text-align:center;font-weight:600}
 .bdg span{max-width:33%}

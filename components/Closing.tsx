@@ -4,7 +4,7 @@ import { SITE } from "@/config/site";
 export default function Closing() {
   return (
     <section className="wrap" id="kontak" aria-labelledby="penutup-judul">
-      <div className="cta">
+      <div className="cta" data-rv>
         <div>
           <h2 id="penutup-judul">Punya proyek untuk dibahas?</h2>
           <p className="introp">Tulis singkat saja. Saya jawab lewat email atau WhatsApp.</p>
@@ -28,11 +28,9 @@ export default function Closing() {
             <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>{" "}
-            ·{" "}
             <a href={SITE.linkedinUrl} target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>{" "}
-            ·{" "}
             <a href={SITE.githubUrl} target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
