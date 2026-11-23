@@ -12,7 +12,17 @@ export default function FloatingCta() {
     if (!hero) return;
     let heroOut = false;
     let kontakIn = false;
-    const upd = () => setOn(heroOut && !kontakIn);
+    let up = false; // tampil hanya saat menggulir ke atas: tidak menutup teks yang sedang dibaca
+    const upd = () => setOn(heroOut && !kontakIn && up);
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (Math.abs(y - last) < 8) return;
+      up = y < last;
+      last = y;
+      upd();
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     const o1 = new IntersectionObserver(([e]) => {
       heroOut = !e.isIntersecting;
       upd();
@@ -26,6 +36,7 @@ export default function FloatingCta() {
     return () => {
       o1.disconnect();
       o2.disconnect();
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
   return (

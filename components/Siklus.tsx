@@ -16,7 +16,7 @@ const LANGKAH = [
   },
   {
     no: "03",
-    judul: "Deployment",
+    judul: "Perilisan",
     teks: "Merilis aplikasi ke Play Store dan App Store, dan menyiapkan alur CI/CD.",
     dasar: "Play Store · App Store · CI/CD",
   },
@@ -24,7 +24,7 @@ const LANGKAH = [
     no: "04",
     judul: "Pemeliharaan",
     teks: "Merawat dan memperbaiki setelah rilis.",
-    dasar: "Maintenance",
+    dasar: "Setelah rilis",
   },
 ] as const;
 
@@ -36,7 +36,7 @@ export default function Siklus() {
       </h2>
       <ol className="sk">
         {LANGKAH.map((l) => (
-          <li key={l.no}>
+          <li key={l.no} data-rv style={{ "--d": Number(l.no) - 1 } as React.CSSProperties}>
             <i>{l.no}</i>
             <b>{l.judul}</b>
             <span>{l.teks}</span>
@@ -48,6 +48,9 @@ export default function Siklus() {
           </li>
         ))}
       </ol>
+      <p className="skback" aria-hidden="true">
+        kembali ke Perancangan: setiap rilis memicu perbaikan berikutnya
+      </p>
     </section>
   );
 }

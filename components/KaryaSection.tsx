@@ -10,12 +10,12 @@ export default function KaryaSection() {
         </h2>
         <p className="introp">
           Empat proyek yang saya bangun. Isi tiap kartu diringkas dari deskripsi proyek di situs saya. Setiap kartu punya
-          contoh interaktif bernama COBA, berisi data contoh, bukan data pengguna.
+          contoh interaktif yang bisa diketuk; isinya data contoh, bukan data pengguna.
         </p>
       </div>
       <p className="hint mono-label">
         <i aria-hidden="true" />
-        Ketuk kartu di kipas atau gulir ke bawah
+        Gulir ke bawah, atau pilih kartu lewat kipas di atas
       </p>
       <div className="stack">
         {FEATURED.map((p, i) => (

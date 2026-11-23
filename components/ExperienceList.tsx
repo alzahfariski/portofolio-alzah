@@ -46,7 +46,7 @@ export default function ExperienceList({
   );
   const edu = educations ?? [];
   return (
-    <div className="xp">
+    <div className="xp band-in t-xp">
       <h2 className="xh mono-label">Pengalaman · terbaru dulu</h2>
       {list.length === 0 ? (
         <p className="edu">Data pengalaman belum bisa dimuat.</p>

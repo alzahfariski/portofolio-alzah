@@ -4,7 +4,7 @@ import { SITE } from "@/config/site";
 export default function Closing() {
   return (
     <section className="wrap" id="kontak" aria-labelledby="penutup-judul">
-      <div className="cta">
+      <div className="cta" data-rv>
         <div>
           <h2 id="penutup-judul">Punya proyek untuk dibahas?</h2>
           <p className="introp">Tulis singkat saja. Saya jawab lewat email atau WhatsApp.</p>

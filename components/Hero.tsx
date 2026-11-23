@@ -15,7 +15,9 @@ export default function Hero({
     <section className="wrap hero" id="atas">
       <div className="idb">
         <StatusPill />
-        <p className="role">{SITE.role}</p>
+        <p className="role">
+          <span>{SITE.role.split(" ")[0]}</span> {SITE.role.split(" ").slice(1).join(" ")}
+        </p>
         <h1>
           <span>{SITE.nameFirst}</span>
           <span>

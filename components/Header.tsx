@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/config/site";
+import LocalClock from "@/components/LocalClock";
 
 const links = [
   { name: "Karya", href: "/#karya" },
@@ -17,6 +18,7 @@ export default function Header() {
         >
           AF
         </Link>
+        <LocalClock />
         <nav aria-label="Utama">
           <ul className="-mr-3.5 flex list-none items-center gap-2 p-0 text-base font-semibold">
             {links.map((l) => (

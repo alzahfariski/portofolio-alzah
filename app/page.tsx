@@ -1,6 +1,9 @@
 import "./beranda.css";
 import "./karya.css";
 import "./spasi.css";
+import "./gaya.css";
+import Bukti from "@/components/Bukti";
+import SmoothScroll from "@/components/SmoothScroll";
 import KaryaSection from "@/components/KaryaSection";
 import ProjectFan from "@/components/ProjectFan";
 import Siklus from "@/components/Siklus";
@@ -26,13 +29,27 @@ export default async function Home() {
   }
   return (
     <>
-      <Hero experiences={experiences} educations={educations} />
-      <Siklus />
-      <section className="wrap fansec" aria-label="Pintasan ke karya pilihan">
-        <ProjectFan />
-      </section>
-      <KaryaSection />
-      <Closing />
+      <SmoothScroll />
+      <div className="band t-hero">
+        <Hero experiences={experiences} educations={educations} />
+      </div>
+      <div className="band t-siklus">
+        <Siklus />
+      </div>
+      <div className="band t-kipas">
+        <section className="wrap fansec" aria-label="Pintasan ke karya pilihan">
+          <ProjectFan />
+        </section>
+      </div>
+      <div className="band t-karya">
+        <KaryaSection />
+      </div>
+      <div className="band t-bukti">
+        <Bukti />
+      </div>
+      <div className="band t-penutup">
+        <Closing />
+      </div>
       <FloatingCta />
     </>
   );
