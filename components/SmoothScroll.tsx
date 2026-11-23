@@ -37,11 +37,19 @@ export default function SmoothScroll() {
         setLenis(lenis);
       });
     };
-    const w = window as unknown as { requestIdleCallback?: (cb: () => void) => number };
-    if (w.requestIdleCallback) w.requestIdleCallback(start);
-    else setTimeout(start, 200);
+    // Lenis dimuat saat interaksi pertama (gulir/sentuh/tombol): tidak membebani muat awal
+    const evs = ["wheel", "touchstart", "keydown", "pointerdown"] as const;
+    let started = false;
+    const first = () => {
+      if (started) return;
+      started = true;
+      evs.forEach((n) => window.removeEventListener(n, first));
+      start();
+    };
+    evs.forEach((n) => window.addEventListener(n, first, { passive: true }));
 
     return () => {
+      evs.forEach((n) => window.removeEventListener(n, first));
       cancelled = true;
       io.disconnect();
       lenis?.destroy();

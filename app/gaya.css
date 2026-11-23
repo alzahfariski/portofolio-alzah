@@ -129,3 +129,6 @@ html.lenis, html.lenis body { height: auto; }
 }
 .t-siklus { --line: rgba(22, 20, 15, 0.38); }
 .skback { font-size: 15px; color: #3a2a24; }
+
+/* kontras: stiker dan chip di bagian gelap memakai kuning aksen dengan teks gelap */
+.t-karya .sticker, .t-karya .chip { background: var(--ac); color: #16140f; }
